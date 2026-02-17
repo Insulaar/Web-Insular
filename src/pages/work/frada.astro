@@ -1,0 +1,158 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+<Layout title="FRADA | INSULAR STUDIO">
+  <main class="project-detail">
+    <section class="vimeo-hero">
+      <div class="black-placeholder"></div>
+    </section>
+
+    <section class="project-intro">
+      <div class="intro-grid">
+        <div class="title-col">
+          <h1 class="section-title">FRADA</h1>
+        </div>
+        <div class="desc-col">
+          <p class="lead-text">
+            Frada es un bodegón moderno ubicado en el límite entre La Paternal y Villa Crespo, Buenos Aires. Trabajamos en el diseño integral de todo el espacio comercial: infraestructura, ventanales, accesos, pisos, luminaria, diseño de interior, entre tanto.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-gallery">
+      
+      <div class="gallery-row left">
+        <div class="media-container col-5">
+          <img src="/img/frada/1.webp" alt="Frada 1" />
+        </div>
+      </div>
+
+      <div class="gallery-row right">
+        <div class="media-container col-5">
+          <img src="/img/frada/2.webp" alt="Frada 2" />
+        </div>
+      </div>
+
+      <div class="gallery-row left">
+        <div class="media-container col-5">
+          <video autoplay loop muted playsinline>
+            <source src="/video/frada/1.mp4" type="video/mp4" />
+          </video>
+        </div>
+      </div>
+
+      <div class="gallery-row right">
+        <div class="media-container col-5">
+          <img src="/img/frada/3.webp" alt="Frada 3" />
+        </div>
+      </div>
+
+      <div class="gallery-row left">
+        <div class="media-container col-5">
+          <img src="/img/frada/4.webp" alt="Frada 4" />
+        </div>
+      </div>
+
+      <div class="gallery-row right">
+        <div class="media-container col-5">
+          <img src="/img/frada/5.webp" alt="Frada 5" />
+        </div>
+      </div>
+
+      <div class="gallery-row left">
+        <div class="media-container col-5">
+          <img src="/img/frada/6.webp" alt="Frada 6" />
+        </div>
+      </div>
+
+      <div class="gallery-row right">
+        <div class="media-container col-5">
+          <img src="/img/frada/7.webp" alt="Frada 7" />
+        </div>
+      </div>
+
+      <div class="gallery-row left">
+        <div class="media-container col-5">
+          <img src="/img/frada/8.webp" alt="Frada 8" />
+        </div>
+      </div>
+
+      <div class="gallery-row right">
+        <div class="media-container col-5">
+          <img src="/img/frada/9.webp" alt="Frada 9" />
+        </div>
+      </div>
+
+      <div class="gallery-row left">
+        <div class="media-container col-5">
+          <img src="/img/frada/10.webp" alt="Frada 10" />
+        </div>
+      </div>
+
+      <div class="gallery-row right">
+        <div class="media-container col-5">
+          <img src="/img/frada/11.webp" alt="Frada 11" />
+        </div>
+      </div>
+
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .project-detail { padding: 0 var(--margin); margin-bottom: 200px; }
+
+  /* Hero */
+  .vimeo-hero { width: 100%; margin-bottom: 0; }
+  .black-placeholder { width: 100%; aspect-ratio: 16/9; background: #000; }
+
+  /* Bloque Intro: 150px de aire exacto */
+  .project-intro { 
+    padding-top: 150px; 
+    padding-bottom: 150px; 
+  }
+  
+  .intro-grid { 
+    display: grid; 
+    grid-template-columns: repeat(9, 1fr); 
+    gap: var(--gap); 
+    align-items: start;
+  }
+  
+  .title-col { grid-column: span 3; }
+  .desc-col { grid-column: 5 / span 5; }
+
+  .section-title { 
+    font-size: 48px; 
+    font-weight: 500; 
+    text-transform: uppercase; 
+    line-height: 0.8; 
+    letter-spacing: -0.02em; 
+  }
+
+  .lead-text { 
+    font-size: 36px; 
+    line-height: 1.1; 
+    font-weight: 400; 
+    letter-spacing: -0.02em;
+    margin-top: -8px; 
+  }
+
+  /* Galería con ritmo de 150px */
+  .project-gallery { display: flex; flex-direction: column; gap: 150px; }
+  .gallery-row { display: grid; grid-template-columns: repeat(9, 1fr); gap: var(--gap); }
+  
+  .left .media-container { grid-column: 1 / span 5; }
+  .right .media-container { grid-column: 5 / span 5; }
+
+  .media-container img, .media-container video { width: 100%; display: block; height: auto; }
+
+  @media (max-width: 800px) {
+    .project-intro { padding-top: 80px; padding-bottom: 80px; }
+    .intro-grid { display: flex; flex-direction: column; gap: 20px; }
+    .lead-text { font-size: 24px; margin-top: 0; }
+    .project-gallery { gap: 80px; }
+    .gallery-row { display: block; }
+  }
+</style>
