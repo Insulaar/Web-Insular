@@ -36,24 +36,44 @@ const { title = "INSULAR STUDIO" } = Astro.props;
 			</nav>
 		</header>
 
-		<slot />
+		<main>
+			<slot />
+		</main>
 
-		<footer class="footer">
-			<div class="footer-content">
-				<div>© 2026 INSULAR STUDIO</div>
-				<div class="footer-social">
-					<a href="#">INSTAGRAM</a>
-					<a href="#">BEHANCE</a>
+		<footer class="site-footer">
+			<div class="footer-grid">
+				<div class="footer-col">
+					<span class="footer-label">UBICACIÓN</span>
+					<p class="footer-data">BUENOS AIRES, ARGENTINA</p>
+				</div>
+				
+				<div class="footer-col">
+					<span class="footer-label">CONTACTO</span>
+					<a href="mailto:insulaar.estudio@gmail.com" class="footer-data">INSULAAR.ESTUDIO@GMAIL.COM</a>
+				</div>
+
+				<div class="footer-col">
+					<span class="footer-label">SOCIAL</span>
+					<a href="https://instagram.com/insulaar" target="_blank" class="footer-data">INSTAGRAM</a>
+				</div>
+
+				<div class="footer-col align-right">
+					<span class="footer-label">© 2026</span>
+					<p class="footer-data">INSULAAR STUDIO</p>
 				</div>
 			</div>
 		</footer>
 
+		<button id="back-to-top" class="back-to-top" aria-label="Volver arriba">
+			<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+				<path d="M12 19V5M5 12l7-7 7 7"/>
+			</svg>
+		</button>
+
 		<script>
-			// Esta función maneja el click del menú
-			const setupMenu = () => {
+			const setupLayout = () => {
 				const btn = document.getElementById('menu-btn');
 				const menu = document.getElementById('nav-menu');
-				
 				if (btn && menu) {
 					btn.onclick = () => {
 						btn.classList.toggle('open');
@@ -61,58 +81,107 @@ const { title = "INSULAR STUDIO" } = Astro.props;
 						document.body.classList.toggle('no-scroll');
 					};
 				}
-			};
 
-			// Se ejecuta al cargar la página y después de cada transición de Astro
-			setupMenu();
-			document.addEventListener('astro:after-swap', setupMenu);
+				const backBtn = document.getElementById('back-to-top');
+				window.addEventListener('scroll', () => {
+					if (window.scrollY > 500) { backBtn?.classList.add('show'); } 
+					else { backBtn?.classList.remove('show'); }
+				});
+				backBtn?.addEventListener('click', () => {
+					window.scrollTo({ top: 0, behavior: 'smooth' });
+				});
+			};
+			setupLayout();
+			document.addEventListener('astro:after-swap', setupLayout);
 		</script>
 
 		<style is:global>
 			:root {
-				--margin: 50px; --gap: 15px; --space-xl: 120px;
-				--bg: #F7F7F7; --black: #1E1E1E; --gray-light: #EBEBEB;
+				--margin: 50px; --gap: 15px;
+				--bg: #F7F7F7; --black: #1E1E1E;
 				--nav-size: 19px; 
 			}
+
 			* { box-sizing: border-box; margin: 0; padding: 0; }
-			body { font-family: 'Satoshi', sans-serif; background: var(--bg); color: var(--black); -webkit-font-smoothing: antialiased; }
-			body.no-scroll { overflow: hidden; }
-
-			.header { display: flex; justify-content: space-between; align-items: center; padding: 8px var(--margin); position: sticky; top: 0; z-index: 1000; background: var(--bg); }
-			.nav-links { display: flex; align-items: center; gap: 40px; }
-			.nav-links a { text-decoration: none; color: var(--black); font-weight: 500; text-transform: uppercase; font-size: var(--nav-size); letter-spacing: 0.02em; }
-			.tipito-link img { height: 42px; width: auto; }
-
-			/* MENU HAMBURGUESA - BOTÓN */
-			.menu-toggle { display: none; flex-direction: column; justify-content: center; gap: 6px; background: none; border: none; cursor: pointer; padding: 10px; z-index: 1200; width: 44px; height: 44px; }
-			.menu-toggle span { width: 28px; height: 2px; background: var(--black); transition: all 0.3s ease; display: block; }
-
-			/* MOBILE STYLES */
-			@media (max-width: 1000px) {
-				:root { --margin: 20px; }
-				.menu-toggle { display: flex; }
-				
-				.nav-container { 
-					position: fixed; top: 0; right: -100%; width: 100%; height: 100vh; 
-					background: var(--bg); display: flex; align-items: center; justify-content: center; 
-					transition: transform 0.6s cubic-bezier(0.77, 0, 0.175, 1); 
-					z-index: 1100;
-				}
-
-				.nav-container.active { transform: translateX(-100%); }
-				
-				.nav-links { flex-direction: column; gap: 40px; }
-				.nav-links a { font-size: 32px; }
-
-				/* Transformar a X cuando está abierto */
-				.menu-toggle.open span:nth-child(1) { transform: translateY(4px) rotate(45deg); }
-				.menu-toggle.open span:nth-child(2) { transform: translateY(-4px) rotate(-45deg); }
+			
+			body { 
+				font-family: 'Satoshi', sans-serif; 
+				background: var(--bg); 
+				color: var(--black); 
+				display: flex;
+				flex-direction: column;
+				min-height: 100vh;
 			}
 
-			/* Footer y otros */
-			.footer { padding: 60px var(--margin); border-top: 1px solid rgba(0,0,0,0.1); font-size: 12px; }
-			.footer-content { display: flex; justify-content: space-between; }
-			.main-title { font-size: 48px; font-weight: 500; text-transform: uppercase; padding-top: 40px; margin-bottom: 40px; }
+			main { flex: 1; }
+
+			.header { display: flex; justify-content: space-between; align-items: center; padding: 20px var(--margin); position: sticky; top: 0; z-index: 1000; background: var(--bg); }
+			.nav-links { display: flex; align-items: center; gap: 40px; }
+			.nav-links a { text-decoration: none; color: var(--black); font-weight: 500; text-transform: uppercase; font-size: var(--nav-size); }
+			.tipito-link img { height: 42px; width: auto; }
+
+			/* FOOTER REFINADO */
+			.site-footer {
+    background-color: #1E1E1E; /* Tu negro de marca */
+    color: #fff;
+    padding: 60px var(--margin); /* Altura equilibrada */
+    width: 100%;
+    margin-top: 150px;
+  }
+
+  .footer-grid {
+    display: grid;
+    /* Cambiamos a 4 columnas iguales para que los textos no se desparramen */
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 40px; /* Espacio fijo entre los 4 bloques */
+  }
+
+  .footer-col {
+    display: flex;
+    flex-direction: column;
+    gap: 4px; /* ESTO ES CLAVE: junta la etiqueta con el dato */
+    align-items: flex-start;
+  }
+
+  /* El último bloque (Copyright) lo alineamos a la derecha para cerrar el diseño */
+  .footer-col:last-child {
+    align-items: flex-end;
+    text-align: right;
+  }
+
+  .footer-label { 
+    font-size: 11px; 
+    letter-spacing: 0.05em; 
+    opacity: 0.5; 
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+
+  .footer-data { 
+    font-size: 14px; 
+    color: #fff; 
+    text-decoration: none; 
+    text-transform: uppercase;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    line-height: 1.2;
+  }
+
+			/* Botón Arriba */
+			.back-to-top {
+				position: fixed; bottom: 30px; right: var(--margin);
+				background: #1E1E1E; color: #fff; border: 1px solid rgba(255,255,255,0.2);
+				width: 44px; height: 44px; border-radius: 50%;
+				cursor: pointer; display: flex; align-items: center; justify-content: center;
+				opacity: 0; visibility: hidden; transition: all 0.3s ease; z-index: 999;
+			}
+			.back-to-top.show { opacity: 1; visibility: visible; }
+
+			@media (max-width: 1000px) {
+				:root { --margin: 20px; }
+				.footer-grid { display: flex; flex-direction: column; gap: 30px; }
+				.site-footer { padding: 40px var(--margin); }
+			}
 		</style>
 	</body>
 </html>

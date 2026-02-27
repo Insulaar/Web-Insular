@@ -1,0 +1,33 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="INSULAR | INSULAR STUDIO">
+  <main class="page-container">
+    <section class="content-grid">
+      <div class="title-col">
+        <h1>INSULAR</h1>
+      </div>
+      <div class="text-col">
+        <p class="placeholder-text">Próximamente: Manifiesto, equipo y visión de Insular Studio.</p>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .page-container {
+    padding: 100px var(--margin);
+    min-height: 60vh;
+  }
+  .content-grid {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    gap: var(--gap);
+  }
+  .title-col { grid-column: span 3; }
+  .text-col { grid-column: 5 / span 5; }
+  
+  h1 { font-size: 48px; font-weight: 500; text-transform: uppercase; }
+  .placeholder-text { font-size: 36px; line-height: 1.1; font-weight: 400; }
+</style>
