@@ -1,150 +1,143 @@
 ---
+import { getCollection, render } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
-import { getCollection } from 'astro:content';
 
 export async function getStaticPaths() {
-  const projectEntries = await getCollection('projects');
-  return projectEntries.map(entry => ({
-    params: { slug: entry.slug }, props: { entry },
-  }));
-}
+  const projects = await getCollection('projects');
+  
+  // FILTRO: Solo generamos páginas para los que NO tienen redirect
+  return projects
+    .filter(entry => !entry.data.redirect) 
+    .map(entry => ({
+      params: { slug: entry.id.replace(/\/index$/, '') },
+      props: { entry },
+    }));
+} // <--- Faltaba esta llave
 
 const { entry } = Astro.props;
-const { data } = entry;
-
-const allFiles = import.meta.glob('/src/content/projects/**/*.{webp,jpg,jpeg,png,mp4}', { eager: true });
-const projectFiles = Object.keys(allFiles)
-  .filter(path => path.includes(`/projects/${entry.slug}/`))
-  .filter(path => !path.includes('cover'))
-  .sort((a, b) => {
-    const getNum = (p) => parseInt(p.split('/').pop().match(/\d+/)?.[0] || "999");
-    return getNum(a) - getNum(b);
-  });
-
-function getFileUrl(path) {
-  const module = allFiles[path];
-  if (!module) return '';
-  return typeof module.default === 'object' ? module.default.src : module.default;
-}
-
-const blocks = entry.body.split('---bloque---');
-const introText = blocks[0];
-const extraTexts = blocks.slice(1);
+const { Content } = await render(entry);
 ---
 
-<Layout title={`${data.title} | INSULAR STUDIO`}>
-  <main class="project-detail">
-    
-    <section class="vimeo-hero">
-      {data.vimeoId && (
-        <div class="video-container-vimeo">
-          <iframe 
-            src={`https://player.vimeo.com/video/${data.vimeoId}?background=1&autoplay=1&loop=1&muted=1`}
-            frameborder="0" allow="autoplay; fullscreen" allowfullscreen>
-          </iframe>
-        </div>
-      )}
-    </section>
-
-    <section class="project-intro">
-      <div class="grid-9">
-        <div class="col-title">
-          <h1 class="section-title">{data.title}</h1>
-        </div>
-        <div class="col-text">
-          <div class="lead-text" set:html={introText}></div>
-          <div class="credits">
-            <span class="label">Créditos:</span> 
-            <span class="names">{data.credits}</span>
-          </div>
-        </div>
+<Layout title={entry.data.title}>
+  <article class="project-page">
+    <header class="section-header">
+      <div class="header-item-reveal work-trigger">
+        <h1>{entry.data.title}</h1>
+        <div class="item-overlay"></div>
       </div>
-    </section>
+    </header>
 
-    <section class="project-gallery">
-      {projectFiles.map((path, index) => {
-        const isEven = (index + 1) % 2 === 0;
-        const fileUrl = getFileUrl(path);
-
-        return (
-          <>
-            <div class={`gallery-row ${isEven ? 'row-right' : 'row-left'}`}>
-              <div class="media-wrapper">
-                {path.endsWith('.mp4') ? (
-                  <video autoplay loop muted playsinline src={fileUrl}></video>
-                ) : (
-                  <img src={fileUrl} alt="" loading="lazy" />
-                )}
-              </div>
-            </div>
-
-            {/* TEXTO INTERMEDIO */}
-            {(index + 1) % 4 === 0 && extraTexts[(index + 1) / 4 - 1] && (
-              <section class="project-intro intermedio">
-                <div class="grid-9">
-                  <div class="col-title">
-                    <h2 class="section-title">CONCEPTO</h2>
-                  </div>
-                  <div class="col-text">
-                    <div class="lead-text" set:html={extraTexts[(index + 1) / 4 - 1]}></div>
-                  </div>
-                </div>
-              </section>
-            )}
-          </>
-        );
-      })}
-    </section>
-  </main>
+    <div class="markdown-render">
+      <Content />
+    </div>
+  </article>
 </Layout>
 
-<style>
-  .project-detail { padding: 0 var(--margin); margin-bottom: 200px; }
-
-  /* Hero */
-  .vimeo-hero { 
-    margin-left: calc(-1 * var(--margin)); 
-    width: calc(100% + (2 * var(--margin))); 
-  }
-  .video-container-vimeo { width: 100%; aspect-ratio: 16/9; background: #000; }
-  .video-container-vimeo iframe { width: 100%; height: 100%; }
-
-  /* Grilla de 9 columnas base */
-  .grid-9 { 
-    display: grid; 
-    grid-template-columns: repeat(9, 1fr); 
-    gap: var(--gap); 
+<style is:global>
+  /* --- ESTRUCTURA DE LA PÁGINA --- */
+  .project-page {
+    width: 100%;
+    padding: 80px var(--margin) 120px var(--margin);
   }
 
-  .project-intro { padding: 150px 0; }
-  .project-intro.intermedio { padding: 100px 0; }
+  .section-header {
+    margin-bottom: 80px; 
+  }
 
-  .col-title { grid-column: span 3; }
-  .col-text { grid-column: 5 / span 5; }
+  .section-header h1 {
+    font-size: clamp(5rem, 15vw, 12rem);
+    line-height: 0.8;
+    letter-spacing: -0.04em;
+    font-weight: 500;
+    color: var(--text-color, #1a1a1a);
+    text-transform: uppercase;
+    margin: 0;
+    padding-left: calc(var(--margin) * -0.05);
+  }
 
-  .section-title { font-size: 48px; font-weight: 500; text-transform: uppercase; line-height: 0.9; }
-  .lead-text { font-size: 36px; line-height: 1.1; letter-spacing: -0.02em; }
-  .credits { margin-top: 40px; font-size: 36px; letter-spacing: -0.02em; }
-  .credits .names { font-weight: 300; font-style: italic; }
+  /* --- GRILLA FLEXIBLE --- */
+  .markdown-render {
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+  }
 
-  /* Galería con imágenes controladas */
-  .project-gallery { display: flex; flex-direction: column; gap: 150px; }
-  
-  .gallery-row { display: grid; grid-template-columns: repeat(9, 1fr); gap: var(--gap); }
-  
-  /* Aquí está el truco: la imagen solo ocupa 5 columnas de las 9 */
-  .media-wrapper { grid-column: span 5; width: 100%; }
-  
-  .row-left .media-wrapper { grid-column: 1 / span 5; }
-  .row-right .media-wrapper { grid-column: 5 / span 5; }
+  /* --- ESTILO DE LOS PÁRRAFOS (TEXTO + IMAGEN) --- */
+  .markdown-render p {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    column-gap: 80px !important;
+    align-items: start !important; 
+    width: 100%;
+    font-family: 'Satoshi', sans-serif; 
+    font-weight: 300; 
+    font-size: 2rem; 
+    line-height: 1.2;
+    text-transform: uppercase;
+    padding-top: 5px; 
+    color: var(--text-color, #1a1a1a);
+  }
 
-  .media-wrapper img, .media-wrapper video { width: 100%; height: auto; display: block; }
+  .markdown-render p img, 
+  .markdown-render p video {
+    grid-column: 1 / 2 !important;
+    width: 100% !important;
+    height: auto !important;
+    margin-top: 0px !important; 
+  }
 
-  @media (max-width: 900px) {
-    .grid-9, .gallery-row { display: flex; flex-direction: column; gap: 30px; }
-    .lead-text, .credits { font-size: 24px; }
-    .section-title { font-size: 32px; }
-    .project-intro { padding: 60px 0; }
-    .project-gallery { gap: 60px; }
+  /* --- CONTROL DE ANCHO COMPLETO --- */
+  .markdown-render .full-v,
+  .markdown-render > video,
+  .markdown-render > img {
+    display: block !important;
+    width: 100% !important;
+  }
+
+  .markdown-render .full-v video {
+    width: 100vw !important;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw !important;
+    margin-right: -50vw !important;
+    height: auto;
+    max-height: 90vh;
+    object-fit: cover;
+  }
+
+  @media (max-width: 768px) {
+    .project-page {
+      padding: 22px var(--margin) 80px var(--margin) !important;
+    }
+
+    .section-header {
+      margin-bottom: 35px !important;
+    }
+
+    .section-header h1 {
+      font-size: 5rem;
+      line-height: 0.75;
+      letter-spacing: -0.05em;
+      margin: 0 !important;
+    }
+
+    .markdown-render {
+      gap: 50px !important;
+    }
+
+    .markdown-render p {
+      grid-template-columns: 1fr !important;
+      gap: 35px !important;
+      padding-top: 0 !important;
+      font-size: 1.1rem !important;
+      line-height: 1.3;
+    }
+
+    .markdown-render p img, 
+    .markdown-render p video {
+      margin-top: 0 !important;
+      width: 100% !important;
+    }
   }
 </style>

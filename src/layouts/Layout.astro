@@ -5,183 +5,318 @@ const { title = "INSULAR STUDIO" } = Astro.props;
 ---
 <!doctype html>
 <html lang="es">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<title>{title}</title>
-		<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
-		<ViewTransitions />
-	</head>
-	<body>
-		<header class="header">
-			<a href="/" class="logo-link">
-				<svg width="40" height="40" viewBox="0 0 98 98" fill="none">
-					<path d="M0 97.0627L68.9353 97.0627L68.9353 28.6618L0 28.6618L0 97.0627Z" fill="#1E1E1E"/>
-					<path d="M97.609 0H68.9762V28.6328H97.609V0Z" fill="#1E1E1E"/>
-				</svg>
-			</a>
-			
-			<button class="menu-toggle" id="menu-btn" aria-label="Menu">
-				<span></span>
-				<span></span>
-			</button>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="generator" content={Astro.generator} />
+        <title>{title}</title>
+        <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
+        <ViewTransitions />
+    </head>
+    <body>
+        <header class="header">
+            <div class="header-item-reveal">
+                <a href="/" class="logo-link">
+                    <svg width="60" height="60" viewBox="0 0 98 98" fill="none">
+                        <path d="M0 97.0627L68.9353 97.0627L68.9353 28.6618L0 28.6618L0 97.0627Z" fill="#1E1E1E"/>
+                        <path d="M97.609 0H68.9762V28.6328H97.609V0Z" fill="#1E1E1E"/>
+                    </svg>
+                </a>
+                <div class="item-overlay"></div>
+            </div>
+            
+            <button class="menu-toggle" id="menu-btn" aria-label="Menu">
+                <span></span>
+                <span></span>
+            </button>
 
-			<nav class="nav-container" id="nav-menu">
-				<div class="nav-links">
-					<a href="/insular">INSULAR</a>
-					<a href="/" class="tipito-link"><img src="/img/tipito.png" alt="Work" /></a>
-					<a href="/contacto">CONTACTO</a>
-				</div>
-			</nav>
-		</header>
+            <nav class="nav-container" id="nav-menu">
+                <div class="nav-links">
+                    <div class="header-item-reveal">
+                        <a href="/insular">INSULAR</a>
+                        <div class="item-overlay"></div>
+                    </div>
 
-		<main>
-			<slot />
-		</main>
+                    <div class="header-item-reveal">
+                        <a href="/" class="tipito-link">
+                            <img src="/img/tipito.png" alt="Work" width="64" height="64" />
+                        </a>
+                        <div class="item-overlay"></div>
+                    </div>
 
-		<footer class="site-footer">
-			<div class="footer-grid">
-				<div class="footer-col">
-					<span class="footer-label">UBICACIÓN</span>
-					<p class="footer-data">BUENOS AIRES, ARGENTINA</p>
-				</div>
-				
-				<div class="footer-col">
-					<span class="footer-label">CONTACTO</span>
-					<a href="mailto:insulaar.estudio@gmail.com" class="footer-data">INSULAAR.ESTUDIO@GMAIL.COM</a>
-				</div>
+                    <div class="header-item-reveal">
+                        <a href="/contacto">CONTACTO</a>
+                        <div class="item-overlay"></div>
+                    </div>
+                </div>
+            </nav>
+        </header>
 
-				<div class="footer-col">
-					<span class="footer-label">SOCIAL</span>
-					<a href="https://instagram.com/insulaar" target="_blank" class="footer-data">INSTAGRAM</a>
-				</div>
+        <main class="content-fade">
+            <slot />
+        </main>
 
-				<div class="footer-col align-right">
-					<span class="footer-label">© 2026</span>
-					<p class="footer-data">INSULAAR STUDIO</p>
-				</div>
-			</div>
-		</footer>
+        <footer class="site-footer">
+            <div class="footer-grid">
+                <div class="footer-item">
+                    <h3>Estudio</h3>
+                    <p>INSULAR STUDIO</p>
+                </div>
+                
+                <div class="footer-item">
+                    <h3>Ubicación</h3>
+                    <p>LA PLATA, ARGENTINA</p>
+                </div>
 
-		<button id="back-to-top" class="back-to-top" aria-label="Volver arriba">
-			<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-				<path d="M12 19V5M5 12l7-7 7 7"/>
-			</svg>
-		</button>
+                <div class="footer-item">
+                    <h3>Instagram</h3>
+                    <a href="https://instagram.com/insular.studio" target="_blank">@INSULAR.STUDIO</a>
+                </div>
 
-		<script>
-			const setupLayout = () => {
-				const btn = document.getElementById('menu-btn');
-				const menu = document.getElementById('nav-menu');
-				if (btn && menu) {
-					btn.onclick = () => {
-						btn.classList.toggle('open');
-						menu.classList.toggle('active');
-						document.body.classList.toggle('no-scroll');
-					};
-				}
+                <div class="footer-item">
+                    <h3>Contacto</h3>
+                    <a href="mailto:hola@insular.studio">HOLA@INSULAR.STUDIO</a>
+                </div>
+            </div>
+        </footer>
 
-				const backBtn = document.getElementById('back-to-top');
-				window.addEventListener('scroll', () => {
-					if (window.scrollY > 500) { backBtn?.classList.add('show'); } 
-					else { backBtn?.classList.remove('show'); }
-				});
-				backBtn?.addEventListener('click', () => {
-					window.scrollTo({ top: 0, behavior: 'smooth' });
-				});
-			};
-			setupLayout();
-			document.addEventListener('astro:after-swap', setupLayout);
-		</script>
+        <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="back-to-top" aria-label="Back to top">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 19V5M5 12l7-7 7 7"/>
+            </svg>
+        </button>
 
-		<style is:global>
-			:root {
-				--margin: 50px; --gap: 15px;
-				--bg: #F7F7F7; --black: #1E1E1E;
-				--nav-size: 19px; 
-			}
+        <script>
+            const setupLayout = () => {
+                const btn = document.getElementById('menu-btn');
+                const menu = document.getElementById('nav-menu');
 
-			* { box-sizing: border-box; margin: 0; padding: 0; }
-			
-			body { 
-				font-family: 'Satoshi', sans-serif; 
-				background: var(--bg); 
-				color: var(--black); 
-				display: flex;
-				flex-direction: column;
-				min-height: 100vh;
-			}
+                if (btn && menu) {
+                    btn.onclick = () => {
+                        btn.classList.toggle('open');
+                        menu.classList.toggle('active');
+                        document.body.classList.toggle('no-scroll');
+                    };
+                }
+            };
 
-			main { flex: 1; }
+            setupLayout();
+            document.addEventListener('astro:after-swap', setupLayout);
+        </script>
 
-			.header { display: flex; justify-content: space-between; align-items: center; padding: 20px var(--margin); position: sticky; top: 0; z-index: 1000; background: var(--bg); }
-			.nav-links { display: flex; align-items: center; gap: 40px; }
-			.nav-links a { text-decoration: none; color: var(--black); font-weight: 500; text-transform: uppercase; font-size: var(--nav-size); }
-			.tipito-link img { height: 42px; width: auto; }
+        <style is:global>
+            :root {
+                --margin: 50px; 
+                --bg: #F7F7F7; 
+                --black: #1E1E1E;
+                --nav-size: 22px;
+            }
 
-			/* FOOTER REFINADO */
-			.site-footer {
-    background-color: #1E1E1E; /* Tu negro de marca */
-    color: #fff;
-    padding: 60px var(--margin); /* Altura equilibrada */
-    width: 100%;
-    margin-top: 150px;
-  }
+            * { box-sizing: border-box; margin: 0; padding: 0; }
+            html { scroll-behavior: smooth; }
 
-  .footer-grid {
-    display: grid;
-    /* Cambiamos a 4 columnas iguales para que los textos no se desparramen */
-    grid-template-columns: repeat(4, 1fr); 
-    gap: 40px; /* Espacio fijo entre los 4 bloques */
-  }
+            body { 
+                font-family: 'Satoshi', sans-serif; 
+                background: var(--bg); 
+                color: var(--black); 
+                display: flex;
+                flex-direction: column;
+                min-height: 100vh;
+                overflow-x: hidden;
+            }
 
-  .footer-col {
-    display: flex;
-    flex-direction: column;
-    gap: 4px; /* ESTO ES CLAVE: junta la etiqueta con el dato */
-    align-items: flex-start;
-  }
+            .content-fade {
+                flex: 1;
+                animation: fadeInUp 0.8s ease-out forwards;
+            }
 
-  /* El último bloque (Copyright) lo alineamos a la derecha para cerrar el diseño */
-  .footer-col:last-child {
-    align-items: flex-end;
-    text-align: right;
-  }
+            @keyframes fadeInUp {
+                from { opacity: 0; transform: translateY(15px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
 
-  .footer-label { 
-    font-size: 11px; 
-    letter-spacing: 0.05em; 
-    opacity: 0.5; 
-    font-weight: 500;
-    text-transform: uppercase;
-  }
+            /* --- HEADER --- */
+            .header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 5px var(--margin);
+                position: sticky;
+                top: 0;
+                z-index: 1000;
+                background: rgba(247, 247, 247); 
+                backdrop-filter: blur(2px);
+                -webkit-backdrop-filter: blur(10px);
+            }
 
-  .footer-data { 
-    font-size: 14px; 
-    color: #fff; 
-    text-decoration: none; 
-    text-transform: uppercase;
-    font-weight: 400;
-    letter-spacing: 0.02em;
-    line-height: 1.2;
-  }
+            .header-item-reveal {
+                position: relative;
+                display: flex;
+                align-items: center;
+                cursor: crosshair;
+            }
 
-			/* Botón Arriba */
-			.back-to-top {
-				position: fixed; bottom: 30px; right: var(--margin);
-				background: #1E1E1E; color: #fff; border: 1px solid rgba(255,255,255,0.2);
-				width: 44px; height: 44px; border-radius: 50%;
-				cursor: pointer; display: flex; align-items: center; justify-content: center;
-				opacity: 0; visibility: hidden; transition: all 0.3s ease; z-index: 999;
-			}
-			.back-to-top.show { opacity: 1; visibility: visible; }
+            .item-overlay {
+                position: absolute;
+                top: -5px;
+                left: -10px;
+                right: -10px;
+                bottom: -5px;
+                background-color: var(--bg);
+                opacity: 0;
+                visibility: hidden;
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+                transition: opacity 0.4s ease, visibility 0.4s ease;
+                z-index: 2;
+                pointer-events: none;
+                border-radius: 4px;
+            }
 
-			@media (max-width: 1000px) {
-				:root { --margin: 20px; }
-				.footer-grid { display: flex; flex-direction: column; gap: 30px; }
-				.site-footer { padding: 40px var(--margin); }
-			}
-		</style>
-	</body>
+            .header-item-reveal:hover .item-overlay {
+                opacity: 0.7;
+                visibility: visible;
+            }
+
+            .header-item-reveal a, 
+            .header-item-reveal svg, 
+            .header-item-reveal img {
+                position: relative;
+                z-index: 1;
+            }
+
+            .nav-links { display: flex; align-items: center; gap: 50px; }
+            .nav-links a { 
+                text-decoration: none; 
+                color: var(--black); 
+                font-weight: 500; 
+                text-transform: uppercase; 
+                font-size: var(--nav-size); 
+            }
+
+            .tipito-link img { height: 70px; width: auto; display: block; }
+            .menu-toggle { display: none; }
+
+            /* --- NUEVO FOOTER --- */
+            .site-footer {
+                background-color: #000;
+                color: #fff;
+                padding: 60px var(--margin);
+                margin-top: 100px;
+                font-family: 'Satoshi', sans-serif;
+                position: relative;
+                z-index: 10;
+            }
+
+            .footer-grid {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 40px;
+                align-items: start;
+                max-width: 1400px;
+            }
+
+            .footer-item h3 {
+                font-size: 10px;
+                font-weight: 500;
+                text-transform: uppercase;
+                letter-spacing: 0.1em;
+                margin-bottom: 15px;
+                opacity: 0.5;
+            }
+
+            .footer-item p, 
+            .footer-item a {
+                font-size: 13px;
+                font-weight: 500;
+                text-transform: uppercase;
+                text-decoration: none;
+                color: #fff;
+                margin: 0;
+                display: block;
+            }
+
+            /* BOTÓN BACK TO TOP */
+            .back-to-top {
+                position: fixed;
+                bottom: 30px;
+                right: var(--margin);
+                background: none;
+                border: none;
+                color: #fff;
+                cursor: pointer;
+                z-index: 10005;
+                padding: 10px;
+                mix-blend-mode: difference;
+            }
+
+            /* --- RESPONSIVE --- */
+            @media (max-width: 1000px) {
+                :root { --margin: 20px; }
+
+                .menu-toggle {
+                    display: flex !important;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: flex-end;
+                    gap: 6px;
+                    background: none;
+                    border: none;
+                    width: 40px;
+                    height: 40px;
+                    z-index: 1001;
+                    cursor: pointer;
+                }
+
+                .menu-toggle span {
+                    display: block;
+                    width: 25px;
+                    height: 2px;
+                    background-color: var(--black);
+                    transition: all 0.3s ease;
+                }
+
+                .menu-toggle.open span:nth-child(1) { transform: translateY(4px) rotate(45deg); }
+                .menu-toggle.open span:nth-child(2) { transform: translateY(-4px) rotate(-45deg); }
+
+                .nav-container {
+                    position: fixed;
+                    top: 0;
+                    right: -100%;
+                    width: 100%;
+                    height: 100vh;
+                    background: var(--bg);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    transition: 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+                    z-index: 1000;
+                }
+                .nav-container.active { right: 0; }
+                .nav-links { flex-direction: column; gap: 40px; text-align: center; }
+                .nav-links a { font-size: 32px; }
+                .tipito-link img { height: 100px; }
+
+                .footer-grid {
+                    grid-template-columns: repeat(2, 1fr);
+                    gap: 30px;
+                }
+            }
+
+            .no-scroll { overflow: hidden; }
+
+            /* --- Sincronización Header/Work --- */
+            body:has(.work-trigger:hover) .item-overlay {
+                opacity: 0.7;
+                visibility: visible;
+            }
+
+            body:has(.work-trigger:hover) .header {
+                z-index: 10000;
+                background: transparent; 
+                backdrop-filter: none;
+            }
+        </style>
+    </body>
 </html>

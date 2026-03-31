@@ -1,115 +1,275 @@
 ---
-import Layout from '../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
-import { Image } from 'astro:assets'; // 1. Agregá esta importación arriba
+import { Image } from 'astro:assets';
+import Layout from '../layouts/Layout.astro';
 
-// Aquí le decimos a Astro: "Traeme todos los proyectos que encuentres"
-const projects = await getCollection('projects');
+const allProjects = await getCollection('projects');
+const sortedProjects = allProjects.sort((a, b) => (a.data.order || 0) - (b.data.order || 0));
 ---
-<Layout title="WORK - INSULAR STUDIO">
-	<main class="home-container">
-		<h1 class="main-title">WORK</h1>
-		
-	<div class="masonry-grid">
-	{
-		projects.map((project) => (
-			<a href={`/projects/${project.slug}`} class="project-card">
-				<Image 
-					src={project.data.cover} 
-					alt={project.data.title} 
-					width={800} 
-					format="webp"
-				/>
-				<div class="project-info">
-					<p>{project.data.title}</p>
-				</div>
-			</a>
-		))
-	}
-</div>
-	</main>
+
+<Layout title="INSULAR STUDIO">
+  <main class="home-wrapper">
+    <header class="section-header">
+      <div class="reveal-trigger work-trigger">
+        <h1>WORK</h1>
+        
+        <div class="global-overlay"></div>
+
+        <div class="work-video-container">
+          <video autoplay loop muted playsinline>
+            <source src="/img/video-work.mp4" type="video/mp4" />
+          </video>
+        </div>
+      </div>
+    </header>
+<section class="modular-grid">
+      {sortedProjects.map((project) => {
+        
+        // --- ESTA ES LA LÓGICA DE REDIRECCIÓN ---
+        // Si el proyecto tiene 'redirect' en el MD, usa eso. 
+        // Si no, usa el link normal (limpiando el /index si existe).
+        const targetLink = project.data.redirect 
+          ? project.data.redirect 
+          : `/projects/${project.id.replace(/\/index$/, '')}`;
+
+        return (
+          <a 
+            href={targetLink} 
+            class={`project-card ${project.data.visual}`}
+            style={`
+              grid-column-start: ${project.data.column || 'auto'};
+              grid-column-end: ${project.data.visual === 'horizontal' ? 'span 2' : 'auto'};
+              grid-row-start: ${project.data.row || 'auto'};
+            `}
+          >
+            <div class="image-container">
+              <Image 
+                src={project.data.image} 
+                alt={project.data.title} 
+                width={1600} 
+              />
+              <div class="project-overlay">
+                <span class="project-title">{project.data.title}</span>
+              </div>
+            </div>
+          </a>
+        );
+      })}
+    </section>
+  </main>
 </Layout>
 
 <style>
-	/* Contenedor Principal */
-	.home-container {
-  padding: 0 var(--margin); /* Esto alinea el contenido con el logo y el footer */
-  margin-top: 100px;
-  margin-bottom: 150px; /* Le da aire al footer para que no se pegue */
+  .home-wrapper {
+    width: 100%;
+    padding: 40px var(--margin) 120px var(--margin); 
+    box-sizing: border-box;
+  }
+
+  .section-header {
+    margin-bottom: 40px; 
+  }
+
+  .reveal-trigger {
+    position: relative;
+    display: inline-block;
+    cursor: crosshair;
+  }
+
+  .section-header h1 {
+    font-family: 'Satoshi', sans-serif;
+    font-weight: 500;
+    font-size: clamp(32px, 15vw, 197px);
+    text-transform: uppercase;
+    margin: 0;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    position: relative;
+    z-index: 10002; /* Por encima de todo */
+    transition: opacity 0.6s ease;
+  }
+
+  .work-trigger:hover h1 {
+    opacity: 0.3;
+  }
+
+  /* CAPA DE DESENFOQUE */
+  .global-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--bg);
+    opacity: 0;
+    visibility: hidden;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    transition: opacity 0.6s ease, visibility 0.6s ease;
+    z-index: 9999; 
+    pointer-events: none;
+  }
+
+  .work-trigger:hover .global-overlay {
+    opacity: 0.8;
+    visibility: visible;
+  }
+
+  /* CONTENEDOR DE VIDEO: Posición Fija y Tamaño Controlado */
+/* 1. ESTADO INICIAL (OCULTO) */
+  .work-video-container {
+    position: absolute; 
+    top: 50%;
+    left: 50%;
+    
+    /* X se queda igual al hover para que no venga del costado */
+    /* Y está en -5% (apenas más abajo que el final) */
+    transform: translate(78.8%, -5%); 
+    
+    width: 400px; 
+    height: auto;
+    visibility: hidden;
+    opacity: 0;
+    
+    /* Bajamos el tiempo a 0.4s para que sea más reactivo y elegante */
+    transition: opacity 0.6s ease, transform 0.7s ease; 
+    z-index: 10001;
+    pointer-events: none;
+  }
+
+  /* 2. ESTADO AL HACER HOVER (SUBE A SU LUGAR) */
+  .work-trigger:hover .work-video-container {
+    opacity: 1;
+    visibility: visible;
+    
+    /* X se mantiene en 78.8% para que no haya movimiento horizontal */
+    /* Y sube a -9.5% (el lugar que ya encontraste) */
+    transform: translate(78.8%, -9.5%); 
+  }
+  .work-video-container video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  /* GRILLA MODULAR */
+  .modular-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px; 
+    align-items: start;
+  }
+
+  .project-card {
+    text-decoration: none;
+    display: block;
+  }
+
+  .image-container {
+    position: relative;
+    background: #f4f4f4;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .project-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(247, 247, 247, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  .project-title {
+    font-size: 13px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+  }
+
+  .project-card:hover .project-overlay { opacity: 1; }
+  .project-card:hover img { transform: scale(1.02); opacity: 0.8; }
+
+  .project-card.cuadrado .image-container { aspect-ratio: 1 / 1; }
+  .project-card.horizontal .image-container { aspect-ratio: 2.03 / 1; }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+  }
+
+/* MOBILE RESPONSIVE - TÍTULO A LA IZQUIERDA Y VIDEO DEBAJO */
+@media (max-width: 768px) {
+  .home-wrapper {
+    padding: 20px var(--margin) 80px var(--margin);
+  }
+
+.section-header {
+      /* 1. ESPACIO ENTRE WORK Y LOS COVERS */
+      /* Aumentalo a 100px o 120px para separar más la grilla */
+      margin-bottom: 40px !important; 
+      display: block; 
+      text-align: left;
+    }
+
+ .section-header h1 {
+      /* 2. TAMAÑO DE FUENTE: Subimos el clamp para que sea más grande en mobile */
+      font-size: clamp(60px, 20vw, 120px) !important;
+      text-align: left;
+      line-height: 0.9;
+      width: auto;
+      display: inline-block;
+    }
+
+  .modular-grid { 
+    display: flex;
+    flex-direction: column;
+    gap: 40px; 
+  }
+
+  .project-card {
+    grid-column: auto !important;
+    grid-row: auto !important;
+    width: 100%;
+  }
+
+  .project-card.horizontal .image-container { aspect-ratio: 1.5 / 1; }
+  .project-overlay { display: none; }
+  
+  .global-overlay { 
+    backdrop-filter: blur(8px); 
+  }
+
+  /* VIDEO EN MOBILE: Posicionado respecto al título */
+  .work-video-container {
+    position: absolute;
+    /* Ajustamos para que aparezca debajo de la palabra WORK */
+    top: 110% !important; 
+    left: 0 !important;
+    transform: none !important; 
+    
+    width: 90vw !important; 
+    height: auto;
+    z-index: 10001;
+    
+    transition: opacity 0.4s ease;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .work-trigger:hover .work-video-container {
+    opacity: 1;
+    visibility: visible;
+  }
 }
-
-	/* Título Principal con aire editorial */
-	.main-title { 
-		font-size: 48px; 
-		font-weight: 500;
-		text-transform: uppercase;
-		margin-top: 20px; 
-		margin-bottom: 20px; 
-		letter-spacing: -0.02em;
-	}
-
-	/* Grilla Masonry */
-	.masonry-grid {
-  display: grid;
-  grid-template-columns: repeat(9, 1fr); /* Volvemos a la grilla de 9 para ser consistentes */
-  gap: var(--gap);
-}
-
-	/* Tarjeta de Proyecto */
-	.project-card {
-		position: relative;
-		display: block;
-		margin-bottom: var(--gap);
-		overflow: hidden;
-		background: var(--gray-light);
-		cursor: pointer;
-	}
-
-	/* Imagen con efecto Zoom */
-	.project-card {
-  grid-column: span 4; /* Las tarjetas ocupan casi la mitad, dejando aire */
-  text-decoration: none;
-  color: inherit;
-}
-	.project-card:hover img {
-		transform: scale(1.05);
-	}
-
-	/* Info que aparece al hacer Hover */
-	.project-info {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		background-color: rgba(0, 0, 0, 0.3); /* Oscurece la foto para leer el texto */
-		opacity: 0;
-		transition: opacity 0.4s ease;
-		pointer-events: none;
-	}
-
-	.project-card:hover .project-info {
-		opacity: 1;
-	}
-
-	.project-info p {
-		color: white;
-		text-transform: uppercase;
-		font-size: 1.1rem;
-		letter-spacing: 2px;
-		font-weight: 500;
-	}
-
-	/* Responsivo */
-	@media (max-width: 900px) { 
-		.masonry-grid { column-count: 2; } 
-	}
-
-	@media (max-width: 600px) { 
-		.masonry-grid { column-count: 1; } 
-		.main-title { font-size: 32px; margin-bottom: 60px; }
-	}
 </style>
