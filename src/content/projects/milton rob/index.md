@@ -8,7 +8,7 @@ column: 1
 row: 3
 ---
 
-<video src="/src/content/projects/milton rob/2.mp4" autoplay loop muted playsinline></video>
+<video src="/img/milton rob/2.mp4" autoplay loop muted playsinline></video>
 TU TEXTO AQUÍ A LA DERECHA.
 
 
@@ -20,10 +20,10 @@ TU TEXTO AQUÍ A LA DERECHA.
 TU TEXTO AQUÍ A LA DERECHA.
 
 
-<video src="/src/content/projects/milton rob/3.mp4" autoplay loop muted playsinline></video>
+<video src="/img/milton rob/3.mp4" autoplay loop muted playsinline></video>
 TU TEXTO AQUÍ A LA DERECHA.
 
-<video src="/src/content/projects/milton rob/4.mp4" autoplay loop muted playsinline></video>
+<video src="/img/milton rob/4.mp4" autoplay loop muted playsinline></video>
 TU TEXTO AQUÍ A LA DERECHA.
 
 
@@ -33,7 +33,7 @@ TU TEXTO AQUÍ A LA DERECHA
 ![SEIS](./6.webp)
 TU TEXTO AQUÍ A LA DERECHA
 
-<video src="/src/content/projects/milton rob/5.mp4" autoplay loop muted playsinline></video>
+<video src="/img/milton rob/5.mp4" autoplay loop muted playsinline></video>
 TU TEXTO AQUÍ A LA DERECHA.
 
 

@@ -8,13 +8,11 @@ column: 1
 row: 1
 ---
 
-<video src="/src/content/projects/dicha/15.mp4" autoplay loop muted playsinline></video>
-TU TEXTO AQUÍ A LA DERECHA.npm run dev
+<video src="/img/dicha/15.mp4" autoplay loop muted playsinline></video>
+TU TEXTO AQUÍ A LA DERECHA.
 
-<video src="/src/content/projects/dicha/16.mp4" autoplay loop muted playsinline></video>
-TU TEXTO AQUÍ A LA DERECHA
-
-
+<video src="/img/dicha/16.mp4" autoplay loop muted playsinline></video>
+TU TEXTO AQUÍ A LA DERECHA.
 
 ![VEINTICUATRO](./24.webp)
 TU TEXTO AQUÍ A LA DERECHA
@@ -28,12 +26,8 @@ TU TEXTO AQUÍ A LA DERECHA
 ![VEINTISIETE](./27.webp)
 TU TEXTO AQUÍ A LA DERECHA
 
-
-
-
-<video src="/src/content/projects/dicha/17.mp4" autoplay loop muted playsinline></video>
+<video src="/img/dicha/17.mp4" autoplay loop muted playsinline></video>
 TU TEXTO AQUÍ A LA DERECHA.
-
 
 ![SEIS](./6.webp)
 RENDER 
@@ -59,10 +53,8 @@ RENDER
 ![CATORCE](./14.webp)
 TU TEXTO AQUÍ A LA DERECHA
 
-<video src="/src/content/projects/dicha/19.mp4" autoplay loop muted playsinline></video>
+<video src="/img/dicha/19.mp4" autoplay loop muted playsinline></video>
 TU TEXTO AQUÍ A LA DERECHA.
-
-
 
 ![ONCE](./11.webp)
 FOTO
@@ -82,7 +74,6 @@ FOTO
 ![TRECE](./13.webp)
 FOTO
 
-
 ![DIECISÉIS](./16.webp)
 TU TEXTO AQUÍ A LA DERECHA
 
@@ -97,7 +88,6 @@ TU TEXTO AQUÍ A LA DERECHA
 
 ![VEINTITRÉS](./23.webp)
 TU TEXTO AQUÍ A LA DERECHA
-
 
 ![QUINCE](./15.webp)
 TU TEXTO AQUÍ A LA DERECHA

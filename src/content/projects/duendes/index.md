@@ -8,10 +8,10 @@ column: 2
 row: 1
 ---
 
-<video src="/src/content/projects/duendes/0.mp4" autoplay loop muted playsinline></video>
+<video src="/img/duendes/0.mp4" autoplay loop muted playsinline></video>
 TU TEXTO AQUÍ A LA DERECHA.
 
-<video src="/src/content/projects/duendes/1.mp4" autoplay loop muted playsinline></video>
+<video src="/img/duendes/1.mp4" autoplay loop muted playsinline></video>
 ACA VA UN VIDEO. FALTA PASARLO A MP4
 
 ![UNO](./1.webp)
@@ -32,17 +32,14 @@ TU TEXTO AQUÍ A LA DERECHA
 ![OCHO](./8.webp)
 TU TEXTO AQUÍ A LA DERECHA
 
-<video src="/src/content/projects/duendes/9.mp4" autoplay loop muted playsinline></video>
+<video src="/img/duendes/9.mp4" autoplay loop muted playsinline></video>
 ACA VA UN VIDEO. FALTA PASARLO A MP4
 
-<video src="/src/content/projects/duendes/10.mp4" autoplay loop muted playsinline></video>
+<video src="/img/duendes/10.mp4" autoplay loop muted playsinline></video>
 ACA VA UN VIDEO. FALTA PASARLO A MP4
 
-<video src="/src/content/projects/duendes/11.mp4" autoplay loop muted playsinline></video>
+<video src="/img/duendes/11.mp4" autoplay loop muted playsinline></video>
 ACA VA UN VIDEO. FALTA PASARLO A MP4
-
-
-
 
 ![NUEVE](./9.webp)
 TU TEXTO AQUÍ A LA DERECHA
@@ -59,21 +56,20 @@ TU TEXTO AQUÍ A LA DERECHA
 ![TRECE](./13.webp)
 TU TEXTO AQUÍ A LA DERECHA
 
-<video src="/src/content/projects/duendes/14.1.mp4" autoplay loop muted playsinline></video>
+<video src="/img/duendes/14.1.mp4" autoplay loop muted playsinline></video>
 ACA VA UN VIDEO. FALTA PASARLO A MP4
 
-<video src="/src/content/projects/duendes/14.2.mp4" autoplay loop muted playsinline></video>
+<video src="/img/duendes/14.2.mp4" autoplay loop muted playsinline></video>
 ACA VA UN VIDEO. FALTA PASARLO A MP4
 
-<video src="/src/content/projects/duendes/14.3.mp4" autoplay loop muted playsinline></video>
+<video src="/img/duendes/14.3.mp4" autoplay loop muted playsinline></video>
 ACA VA UN VIDEO. FALTA PASARLO A MP4
 
-<video src="/src/content/projects/duendes/15.mp4" autoplay loop muted playsinline></video>
+<video src="/img/duendes/15.mp4" autoplay loop muted playsinline></video>
 ACA VA UN VIDEO. FALTA PASARLO A MP4
 
-<video src="/src/content/projects/duendes/16.mp4" autoplay loop muted playsinline></video>
+<video src="/img/duendes/16.mp4" autoplay loop muted playsinline></video>
 ACA VA UN VIDEO. FALTA PASARLO A MP4
-
 
 ![CATORCE](./14.webp)
 TU TEXTO AQUÍ A LA DERECHA

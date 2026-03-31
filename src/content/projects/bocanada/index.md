@@ -8,9 +8,8 @@ column: 2
 row: 4
 ---
 
-<video src="/src/content/projects/bocanada/1.mp4" autoplay loop muted playsinline></video>
+<video src="/img/bocanada/1.mp4" autoplay loop muted playsinline></video>
 TU TEXTO AQUÍ A LA DERECHA.
-
 
 ![UNO](./1.webp)
 TU TEXTO AQUÍ A LA DERECHA
@@ -21,13 +20,13 @@ TU TEXTO AQUÍ A LA DERECHA
 ![TRES](./3.webp)
 TU TEXTO AQUÍ A LA DERECHA
 
-<video src="/src/content/projects/bocanada/2.mp4" autoplay loop muted playsinline></video>
+<video src="/img/bocanada/2.mp4" autoplay loop muted playsinline></video>
 TU TEXTO AQUÍ A LA DERECHA.
 
-<video src="/src/content/projects/bocanada/3.mp4" autoplay loop muted playsinline></video>
+<video src="/img/bocanada/3.mp4" autoplay loop muted playsinline></video>
 TU TEXTO AQUÍ A LA DERECHA.
 
-<video src="/src/content/projects/bocanada/4.mp4" autoplay loop muted playsinline></video>
+<video src="/img/bocanada/4.mp4" autoplay loop muted playsinline></video>
 TU TEXTO AQUÍ A LA DERECHA.
 
 ![CUATRO](./4.webp)

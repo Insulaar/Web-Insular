@@ -9,7 +9,7 @@ row: 6
 ---
 
 
-<video src="/src/content/projects/frada/1.mp4" autoplay loop muted playsinline></video>
+<video src="/img/frada/1.mp4" autoplay loop muted playsinline></video>
 TU TEXTO AQUÍ A LA DERECHA.
 
 
@@ -19,7 +19,7 @@ TU TEXTO AQUÍ A LA DERECHA.
 ![DOS](./2.webp)
 TU TEXTO AQUÍ A LA DERECHA.
 
-<video src="/src/content/projects/frada/4.3.mp4" autoplay loop muted playsinline></video>
+<video src="/img/frada/4.3.mp4" autoplay loop muted playsinline></video>
 TU TEXTO AQUÍ A LA DERECHA.
 
 
@@ -29,31 +29,31 @@ TU TEXTO AQUÍ A LA DERECHA.
 ![DOSUNO](./2.1.webp)
 TU TEXTO AQUÍ A LA DERECHA.
 
-<video src="/src/content/projects/frada/4.1.mp4" autoplay loop muted playsinline></video>
+<video src="/img/frada/4.1.mp4" autoplay loop muted playsinline></video>
 FOTOS AJUSTAR TAMAÑOS.
 
-<video src="/src/content/projects/frada/2.3.mp4" autoplay loop muted playsinline></video>
+<video src="/img/frada/2.3.mp4" autoplay loop muted playsinline></video>
 FOTOS AJUSTAR TAMAÑO.
 
-<video src="/src/content/projects/frada/4.4.mp4" autoplay loop muted playsinline></video>
+<video src="/img/frada/4.4.mp4" autoplay loop muted playsinline></video>
 FOTOS AJUSTAR TAMAÑO.
 
 
 ![TRES](./3.webp)
 RENDER
 
-<video src="/src/content/projects/frada/2.mp4" autoplay loop muted playsinline></video>
+<video src="/img/frada/2.mp4" autoplay loop muted playsinline></video>
 RENDER
 
 
-<video src="/src/content/projects/frada/3.mp4" autoplay loop muted playsinline></video>
+<video src="/img/frada/3.mp4" autoplay loop muted playsinline></video>
 RENDER PLANOS
 
 ![TRESUNO](./3.1.webp)
 RENDER PLANOS
 
 
-<video src="/src/content/projects/frada/5.4.mp4" autoplay loop muted playsinline></video>
+<video src="/img/frada/5.4.mp4" autoplay loop muted playsinline></video>
 RENDER
 
 ![CINCODOS](./5.2.webp)
@@ -62,7 +62,7 @@ RENDER
 ![CUATRO](./4.webp)
 RENDER
 
-<video src="/src/content/projects/frada/5.3.mp4" autoplay loop muted playsinline></video>
+<video src="/img/frada/5.3.mp4" autoplay loop muted playsinline></video>
 RENDER
 
 
@@ -78,19 +78,19 @@ RENDER
 RENDER
 
 
-<video src="/src/content/projects/frada/6.mp4" autoplay loop muted playsinline></video>
+<video src="/img/frada/6.mp4" autoplay loop muted playsinline></video>
 RENDER
 
 ![DIEZUNO](./10.1.webp)
 RENDER
 
-<video src="/src/content/projects/frada/5.mp4" autoplay loop muted playsinline></video>
+<video src="/img/frada/5.mp4" autoplay loop muted playsinline></video>
 TU TEXTO AQUÍ A LA DERECHA.
 
 ![ONCEUNO](./11.1.webp)
 RENDER
 
-<video src="/src/content/projects/frada/4.mp4" autoplay loop muted playsinline></video>
+<video src="/img/frada/4.mp4" autoplay loop muted playsinline></video>
 TU TEXTO AQUÍ A LA DERECHA.
 
 ![DOCE](./12.webp)
@@ -102,7 +102,7 @@ TU TEXTO AQUÍ A LA DERECHA.
 ![CINCO](./5.webp)
 TU TEXTO AQUÍ A LA DERECHA.
 
-<video src="/src/content/projects/frada/8.mp4" autoplay loop muted playsinline></video>
+<video src="/img/frada/8.mp4" autoplay loop muted playsinline></video>
 TU TEXTO AQUÍ A LA DERECHA.
 
 

@@ -8,7 +8,7 @@ column: 3
 row: 2
 ---
 
-<video src="/src/content/projects/lata/3.mp4" autoplay loop muted playsinline></video>
+<video src="/img/lata/3.mp4" autoplay loop muted playsinline></video>
 TU TEXTO AQUÍ A LA DERECHA.
 
 
@@ -20,10 +20,10 @@ TU TEXTO AQUÍ A LA DERECHA.
 TU TEXTO AQUÍ A LA DERECHA.
 
 
-<video src="/src/content/projects/lata/1.mp4" autoplay loop muted playsinline></video>
+<video src="/img/lata/1.mp4" autoplay loop muted playsinline></video>
 TU TEXTO AQUÍ A LA DERECHA.
 
-<video src="/src/content/projects/lata/2.mp4" autoplay loop muted playsinline></video>
+<video src="/img/lata/2.mp4" autoplay loop muted playsinline></video>
 TU TEXTO AQUÍ A LA DERECHA.
 
 
@@ -37,8 +37,8 @@ TU TEXTO AQUÍ A LA DERECHA.
 ![CINCO](./5.webp)
 TU TEXTO AQUÍ A LA DERECHA.
 
-<video src="/src/content/projects/lata/4.mp4" autoplay loop muted playsinline></video>
+<video src="/img/lata/4.mp4" autoplay loop muted playsinline></video>
 TU TEXTO AQUÍ A LA DERECHA.
 
-<video src="/src/content/projects/lata/5.mp4" autoplay loop muted playsinline></video>
+<video src="/img/lata/5.mp4" autoplay loop muted playsinline></video>
 TU TEXTO AQUÍ A LA DERECHA.
