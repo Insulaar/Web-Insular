@@ -116,10 +116,20 @@ const { Content } = await render(entry);
     }
 
     .section-header h1 {
-      font-size: 5rem;
-      line-height: 0.75;
+      /* 1. Ajuste Dinámico: Usamos clamp para que el texto nunca sea más ancho que la pantalla */
+      font-size: clamp(3rem, 16vw, 5.5rem) !important;
+      line-height: 0.9;
       letter-spacing: -0.05em;
       margin: 0 !important;
+      
+      /* 2. Control de Desbordamiento: Forzamos el ajuste de palabras largas */
+      overflow-wrap: break-word;
+      word-wrap: break-word;
+      word-break: break-word; /* Corta la palabra si es estrictamente necesario */
+      hyphens: auto; /* Agrega guiones si el navegador lo soporta */
+      
+      width: 100%;
+      display: block;
     }
 
     .markdown-render {

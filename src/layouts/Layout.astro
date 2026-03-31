@@ -126,6 +126,17 @@ const { title = "INSULAR STUDIO" } = Astro.props;
                 overflow-x: hidden;
             }
 
+/* Cuando WORK (dentro del main) tiene hover, el header se desvanece */
+body:has(.work-trigger:hover) header {
+    opacity: 0.3;
+    transition: opacity 0.6s ease;
+}
+
+/* Pero el header recupera fuerza si pasamos el mouse directamente sobre él */
+body:has(.work-trigger:hover) header:hover {
+    opacity: 1;
+}
+
             .content-fade {
                 flex: 1;
                 animation: fadeInUp 0.8s ease-out forwards;
@@ -251,72 +262,90 @@ const { title = "INSULAR STUDIO" } = Astro.props;
                 mix-blend-mode: difference;
             }
 
-            /* --- RESPONSIVE --- */
-            @media (max-width: 1000px) {
-                :root { --margin: 20px; }
+  /* --- RESPONSIVE --- */
+@media (max-width: 1000px) {
+    :root { --margin: 20px; }
 
-                .menu-toggle {
-                    display: flex !important;
-                    flex-direction: column;
-                    justify-content: center;
-                    align-items: flex-end;
-                    gap: 6px;
-                    background: none;
-                    border: none;
-                    width: 40px;
-                    height: 40px;
-                    z-index: 1001;
-                    cursor: pointer;
-                }
+    html, body {
+        overflow-x: hidden;
+        width: 100%;
+        position: relative;
+    }
 
-                .menu-toggle span {
-                    display: block;
-                    width: 25px;
-                    height: 2px;
-                    background-color: var(--black);
-                    transition: all 0.3s ease;
-                }
+    .header {
+        padding: 10px var(--margin);
+        width: 100%;
+        left: 0;
+    }
 
-                .menu-toggle.open span:nth-child(1) { transform: translateY(4px) rotate(45deg); }
-                .menu-toggle.open span:nth-child(2) { transform: translateY(-4px) rotate(-45deg); }
+    .logo-link svg {
+        width: 48px;
+        height: 48px;
+    }
 
-                .nav-container {
-                    position: fixed;
-                    top: 0;
-                    right: -100%;
-                    width: 100%;
-                    height: 100vh;
-                    background: var(--bg);
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    transition: 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-                    z-index: 1000;
-                }
-                .nav-container.active { right: 0; }
-                .nav-links { flex-direction: column; gap: 40px; text-align: center; }
-                .nav-links a { font-size: 32px; }
-                .tipito-link img { height: 100px; }
+    .menu-toggle {
+        display: flex !important;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-end;
+        gap: 6px;
+        background: none;
+        border: none;
+        width: 40px;
+        height: 40px;
+        z-index: 1100;
+        cursor: pointer;
+    }
 
-                .footer-grid {
-                    grid-template-columns: repeat(2, 1fr);
-                    gap: 30px;
-                }
-            }
+    .menu-toggle span {
+        display: block;
+        width: 25px;
+        height: 2px;
+        background-color: var(--black);
+        transition: all 0.3s ease;
+    }
 
-            .no-scroll { overflow: hidden; }
+    .menu-toggle.open span:nth-child(1) { transform: translateY(4px) rotate(45deg); }
+    .menu-toggle.open span:nth-child(2) { transform: translateY(-4px) rotate(-45deg); }
 
-            /* --- Sincronización Header/Work --- */
-            body:has(.work-trigger:hover) .item-overlay {
-                opacity: 0.7;
-                visibility: visible;
-            }
+    /* EL MENÚ OCULTO */
+    .nav-container {
+        position: fixed;
+        top: 0;
+        right: -100vw;
+        width: 100vw;
+        height: 100vh;
+        background: var(--bg);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        z-index: 1050;
+        visibility: hidden;
+    }
 
-            body:has(.work-trigger:hover) .header {
-                z-index: 10000;
-                background: transparent; 
-                backdrop-filter: none;
-            }
+    .nav-container.active {
+        transform: translateX(-100vw);
+        visibility: visible;
+    }
+
+    .nav-links { 
+        display: flex !important;
+        flex-direction: column; 
+        gap: 40px; 
+        text-align: center; 
+    }
+    
+    .nav-links a { font-size: 32px; }
+    .tipito-link img { height: 80px; }
+
+    .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+}
+            
         </style>
     </body>
 </html>

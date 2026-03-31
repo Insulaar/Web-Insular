@@ -207,61 +207,86 @@ const sortedProjects = allProjects.sort((a, b) => (a.data.order || 0) - (b.data.
     transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
   }
 
-/* MOBILE RESPONSIVE - TÍTULO A LA IZQUIERDA Y VIDEO DEBAJO */
+/* MOBILE RESPONSIVE - GRILLA Y VIDEO CORREGIDO */
 @media (max-width: 768px) {
   .home-wrapper {
-    padding: 20px var(--margin) 80px var(--margin);
+    /* 1. Espacio arriba de WORK (Ajusta este número a tu gusto) */
+    padding: 5px 0 80px 0 !important; 
+    width: 100%;
   }
 
-.section-header {
-      /* 1. ESPACIO ENTRE WORK Y LOS COVERS */
-      /* Aumentalo a 100px o 120px para separar más la grilla */
-      margin-bottom: 40px !important; 
-      display: block; 
-      text-align: left;
-    }
+ .section-header {
+    padding: 0 var(--margin);
+    /* 2. Espacio abajo de WORK (Mismo valor que el padding-top del wrapper) */
+    margin-bottom: 20px !important; 
+    display: block; 
+    text-align: left;
+  }
 
- .section-header h1 {
-      /* 2. TAMAÑO DE FUENTE: Subimos el clamp para que sea más grande en mobile */
-      font-size: clamp(60px, 20vw, 120px) !important;
-      text-align: left;
-      line-height: 0.9;
-      width: auto;
-      display: inline-block;
-    }
+  /* IMPORTANTE: Forzamos que el trigger ocupe el ancho para poder centrar el video */
+  .reveal-trigger.work-trigger {
+    display: block !important;
+    width: 100%;
+    position: relative;
+  }
+
+  .section-header h1 {
+    font-size: clamp(60px, 18vw, 95px) !important;
+    text-align: left;
+    line-height: 0.9;
+    display: inline-block;
+  }
 
   .modular-grid { 
     display: flex;
     flex-direction: column;
-    gap: 40px; 
-  }
-
-  .project-card {
-    grid-column: auto !important;
-    grid-row: auto !important;
+    gap: 48px; 
     width: 100%;
   }
 
-  .project-card.horizontal .image-container { aspect-ratio: 1.5 / 1; }
-  .project-overlay { display: none; }
-  
-  .global-overlay { 
-    backdrop-filter: blur(8px); 
+  .project-card {
+    width: 100%;
+    position: relative;
   }
 
-  /* VIDEO EN MOBILE: Posicionado respecto al título */
+  .project-overlay { 
+    position: relative; 
+    display: flex; 
+    opacity: 1; 
+    background: transparent;
+    justify-content: flex-start;
+    padding: 15px var(--margin) 5px var(--margin);
+    height: auto;
+  }
+
+  .project-title {
+    font-size: 12px;
+    color: var(--black);
+    opacity: 0.7;
+  }
+
+  /* VIDEO EN MOBILE: Centrado y dentro de márgenes */
   .work-video-container {
     position: absolute;
-    /* Ajustamos para que aparezca debajo de la palabra WORK */
     top: 110% !important; 
+    
+    /* Centrado real */
     left: 0 !important;
-    transform: none !important; 
+    right: 0 !important;
+    margin: 0 auto !important; 
     
-    width: 90vw !important; 
+    /* Ancho exacto igual al margen del logo y los textos */
+    width: calc(100% - (var(--margin) * 0)) !important; 
+    /* Si quieres que tenga un airecito a los lados, usa: calc(100% - 40px) */
+    
+    max-width: 450px;
     height: auto;
-    z-index: 10001;
     
-    transition: opacity 0.4s ease;
+    /* Efecto de entrada suave */
+    transform: translateY(10px) scale(0.98) !important;
+    
+    z-index: 10001;
+    transition: opacity 0.4s ease, transform 0.5s ease;
     visibility: hidden;
     opacity: 0;
     pointer-events: none;
@@ -270,6 +295,13 @@ const sortedProjects = allProjects.sort((a, b) => (a.data.order || 0) - (b.data.
   .work-trigger:hover .work-video-container {
     opacity: 1;
     visibility: visible;
+    transform: translateY(0) scale(1) !important;
+  }
+
+  .work-video-container video {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
   }
 }
-</style>
