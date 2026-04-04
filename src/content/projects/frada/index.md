@@ -11,10 +11,26 @@ row: 6
 
 <video src="/img/frada/1.mp4" autoplay loop muted playsinline></video>
 
+<div class="text-box">
+
+<p class="f-bold t-large upper">Frada</p>
+<p class="f-regular t-medium"><br />FRADA ES UN BODEGÓN MODERNO UBICADO EN EL LÍMITE ENTRE LA PATERNAL Y VILLA CRESPO, CABA.<br /><br /> TRABAJAMOS EN EL DISEÑO INTEGRAL DE TODO EL ESPACIO COMERCIAL: INFRAESTRUCTURA, VENTANALES, ACCESOS, PISOS, LUMINARIA, DISEÑO DE INTERIOR, ENTRE TANTO. </p>
+
+<p class="t-medium">
+<span class="f-regular"><br />Créditos:</span> 
+<span class="f-light"> Arq. Julian Fournes<br /> Diseñador Lue <br /> Diseñadora Julieta Pesl.</span></p>
+
+
+</div>
+
+
+
 
 ![UNO](./1.webp)
 
 ![DOS](./2.webp)
+
+
 
 <video src="/img/frada/4.3.mp4" autoplay loop muted playsinline></video>
 

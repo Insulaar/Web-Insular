@@ -58,9 +58,16 @@ const { Content } = await render(entry);
     font-size: clamp(32px, 15vw, 197px) !important;
     line-height: 1 !important;
     text-transform: uppercase;
-margin: 0 0 0 -0.09em !important; /* El valor negativo lo tira a la izquierda */    letter-spacing: -0.02em !important; /* Igual al index */
+margin: 0 0 0 -0.09em !important; /* El valor negativo lo tira a la izquierda */ 
+
+    letter-spacing: -0.02em !important; /* Igual al index */
     transition: opacity 0.6s ease;
     cursor: crosshair;
+/* AGREGÁ ESTO PARA EL SALTO DE LÍNEA */
+    white-space: normal !important; /* Permite que el texto baje de renglón */
+    word-break: break-word !important; /* Si una palabra es excesivamente larga, la corta */
+    width: 100% !important; /* Asegura que ocupe todo el ancho disponible */
+
   }
 
   .title-main:hover { 
