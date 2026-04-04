@@ -46,7 +46,7 @@ const { Content } = await render(entry);
 
   /* 2. HEADER: IGUAL AL HOME (WORK) */
   .section-header {
-    padding: 40px var(--margin) 40px var(--margin) !important;
+    padding: 17px var(--margin) 40px var(--margin) !important;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -114,6 +114,7 @@ margin: 0 0 0 -0.09em !important; /* El valor negativo lo tira a la izquierda */
     /* Elementos por defecto a la izquierda */
     .markdown-render > * { 
       grid-column: 1 / 2 !important; 
+      margin-top: -12px !important; /* <--- AGREGÁ ESTA LÍNEA */
     }
 
     /* Caja de texto a la derecha */

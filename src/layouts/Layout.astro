@@ -85,11 +85,9 @@ const { title = "INSULAR STUDIO" } = Astro.props;
             </div>
         </footer>
 
-        <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="back-to-top" aria-label="Back to top">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M12 19V5M5 12l7-7 7 7"/>
-            </svg>
-        </button>
+     <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="back-to-top" aria-label="Back to top">
+  <img src="/backtotop.svg" alt="Back to top" class="back-icon" />
+</button>
 
         <script>
             const setupLayout = () => {
@@ -255,16 +253,27 @@ body:has(.work-trigger:hover) header:hover {
             /* BOTÓN BACK TO TOP */
             .back-to-top {
                 position: fixed;
-                bottom: 30px;
+                bottom: 40px;
                 right: var(--margin);
                 background: none;
                 border: none;
-                color: #fff;
+                color: #1E1E1E;
                 cursor: pointer;
-                z-index: 10005;
-                padding: 10px;
+                z-index: 99999 !important; /* Aumentamos el valor para que pase por encima de todo */
+                padding: 0px;
                 mix-blend-mode: difference;
+                pointer-events: all; /* Asegura que sea clickeable aunque algo flote cerca */
             }
+
+            .back-icon {
+  width: 60px; /* Ajustalo a tu gusto */
+  height: auto;
+  filter: invert(1); /* Fundamental para que el mix-blend-mode: difference funcione si el SVG es negro */
+}
+
+body.no-scroll .back-to-top {
+    display: none !important;
+}
 
 .footer-item a {
     color: #fff !important;

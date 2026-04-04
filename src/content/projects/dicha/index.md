@@ -15,15 +15,19 @@ row: 1
 EN EL DISEÑO INTEGRAL DEL NUEVO ESPACIO COMERCIAL DE LA MARCA.
 </p>
  
-<p class="t-medium">
-        <span class="f-regular"><br />Créditos:</span>
-        <span class="f-light"> Arq. Julian Fournes<br /> Diseñador Lue <br /> Diseñadora Julieta Pesl.</span>
-    </p>
-
 </div>
 
 
 <video src="/img/dicha/17.mp4" autoplay loop muted playsinline></video>
+
+<div class="text-box">
+<p class="t-medium">
+        <span class="f-regular">Créditos:</span>
+        <span class="f-light"> Arq. Julian Fournes<br /> Diseñador Lue <br /> Diseñadora Julieta Pesl.</span>
+    </p>
+</div>
+
+
 
 ![VEINTICUATRO](./24.webp)
 
