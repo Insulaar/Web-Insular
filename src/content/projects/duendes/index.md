@@ -1,7 +1,7 @@
 ---
 title: "HOTEL NAVIDAD Ville Saint Germain "
 visual: "horizontal"
-category: "Arquitectura"
+category: ["ANIMACION", "MOTION GRAPCHIS", "MAPPING", "ARCHVIZ", "RENDER 3D"]
 image: "./cover.webp"
 order: 2
 column: 2

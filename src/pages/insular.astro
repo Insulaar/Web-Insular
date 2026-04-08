@@ -2,64 +2,482 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="INSULAR | INSULAR STUDIO">
-  <main class="page-container">
-    <section class="content-grid">
-      <div class="title-col">
-        <h1>INSULAR</h1>
-      </div>
-      <div class="text-col">
-        <p class="placeholder-text">Próximamente: Manifiesto, equipo y visión de Insular Studio.</p>
-      </div>
-    </section>
-  </main>
+<Layout title="INSULAR">
+
+  <div class="vertical-wrapper">
+
+    <section class="v-item section-1">
+  <div class="reveal hero-container">
+    <div class="hero-text">
+      <p>EXPLORADORES DEL DISEÑO</p>
+      <p>CREADORES DE IMÁGENES,</p>
+      <p>DÍA A DÍA EXPANDIMOS</p>
+      <p>NUESTRO UNIVERSO CREATIVO.</p>
+    </div>
+    <img src="/Insular.svg" alt="Insular Logo" class="main-vector" />
+  </div>
+</section>
+
+
+<section class="v-item section-2">
+  <div class="content-text-block reveal">
+    <div class="text-wrapper-left">
+      <p class="secondary-paragraph">
+        MI NOMBRE ES <span class="name-trigger text-medium">LUCAS & LUE.<img src="/img/lucaslue.webp" alt="Lucas y Lue" class="reveal-img" /></span> 
+        ESTUDIÉ DISEÑO MULTIMEDIA Y DISEÑO EN COMUNICACIÓN VISUAL EN LA FACULTAD DE ARTES DE LA UNIVERSIDAD NACIONAL DE LA PLATA.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="v-item section-3">
+  <div class="content-text-block reveal">
+    <div class="text-wrapper-left">
+      <p class="secondary-paragraph">
+        HACE UN TIEMPO SE CREÓ INSULAR PARA ABORDAR TODO TIPO DE TRABAJOS PERTINENTES AL MUNDO DEL DISEÑO.
+      </p>
+
+      <p class="secondary-paragraph text-medium">
+        BRANDING, MOTION GRAPHICS, GRÁFICA APLICADA AL ESPACIO, MODELADO 3D, RENDERS, ARCHVIZ, VISUALES, ETC.
+      </p>
+
+      <p class="secondary-paragraph">
+        DESDE PROYECTOS DE MENOR ESCALA HASTA DESAFÍOS MÁS COMPLEJOS.
+      </p>
+    </div>
+
+  </div>
+
+</section>
+
+
+<section class="v-item section-4">
+  <div class="content-text-block reveal">
+    <div class="text-wrapper-left">
+      <p class="secondary-paragraph">
+        DESDE INSULAR ME ASOCIO CON ESTUDIOS COMO <span class="text-medium">FLUO LABS O BORE STUDIO,</span> CON EL FIN DE ABORDAR PROYECTOS DE MAYOR ESCALA. TAMBIÉN INTEGRÓ UN EQUIPO DE DISEÑO INTERIOR DE ESPACIOS COMERCIALES, JUULS ESTUDIO.
+      </p>
+      <p class="secondary-paragraph">
+        CREAMOS EQUIPOS DE TRABAJO ACORDES A TUS PROYECTOS Y VISIÓN.
+      </p>
+    </div>
+  </div>
+</section>
+  </div>
+
 </Layout>
 
-<style>
-  .page-container {
-    padding: 150px var(--margin); /* Ajustado para que respire igual que los proyectos */
-    min-height: 70vh;
-  }
-  
-  .content-grid {
-    display: grid;
-    grid-template-columns: repeat(9, 1fr);
-    gap: var(--gap);
-  }
-  
-  .title-col { 
-    grid-column: span 3; 
-  }
-  
-  .text-col { 
-    grid-column: 5 / span 5; 
-  }
-  
-  h1 { 
-    font-size: 48px; 
-    font-weight: 500; 
-    text-transform: uppercase; 
-    line-height: 0.9;
-  }
-  
-  .placeholder-text { 
-    font-size: 36px; 
-    line-height: 1.1; 
-    font-weight: 400; 
-    letter-spacing: -0.02em;
+
+<style is:global>
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background-color: #F7F7F7;
   }
 
-  /* Responsivo: para que no se peguen las columnas en móvil */
-  @media (max-width: 900px) {
-    .page-container {
-      padding: 100px var(--margin);
-    }
-    .content-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 30px;
-    }
-    h1 { font-size: 32px; }
-    .placeholder-text { font-size: 24px; }
+
+  header {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10000;
   }
+
+
+  .vertical-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+  }
+
+
+footer, .site-footer {
+
+  margin-top: 0 !important;
+  display: block;
+  width: 100%;
+  position: relative;
+  z-index: 1; /* Para que no quede debajo de la sección anterior */
+
+}
+
+
+.section-4 {
+
+  background-color: #FFFFFF;
+  margin-bottom: 0 !important;
+  min-height: 100vh;
+
+}
+
+
+  .v-item {
+
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 5%;
+    box-sizing: border-box;
+    overflow: hidden;
+    position: relative;
+
+  }
+
+
+/* --- SECCIÓN 1: HERO --- */
+
+.hero-container {
+
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90%;          /* Antes estaba en 100% */
+  max-width: 900px;    /* Antes estaba en 1200px */
+
+}
+
+
+.hero-text {
+
+  position: absolute;
+  top: -15px;          /* Restaurado */
+  right: 542px;        /* Cambiado de 'left' a 'right' con el valor exacto anterior */
+  text-align: left;
+  font-family: 'Satoshi', sans-serif;
+  font-weight: 500;
+  font-size: 20.9px;   /* Restaurado */
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: #000;
+  z-index: 2;
+
+}
+
+
+.section-1 .main-vector {
+
+  margin-top: 120px;   /* Restaurado (antes 80px) */
+  margin-left: 15px;   /* Restaurado */
+  width: 90%;
+  max-width: 900px;
+  height: auto;
+  display: block;
+
+}
+
+
+  .hero-text p { margin: 0; padding: 0; }
+
+
+  .name-trigger {
+
+    font-weight: 700;
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+
+  }
+
+
+  .reveal-img {
+  position: absolute;
+
+  /* 1. POSICIÓN RELATIVA A LA VENTANA: */
+
+  /* 50% / 50% es el centro de la pantalla. */
+
+  top: 50%;
+  left: 50%;
+
+
+  /* 2. AJUSTE DE POSICIÓN Y ESCALA (Scale): */
+
+  /* Este transform es crucial. El translate(-50%, -50%) centra la imagen. */
+
+  /* El scale(0.8) es el tamaño INICIAL antes del hover. */
+
+  /* Puedes probar con scale(0.5) para que empiece más chica. */
+
+  transform: translate(-50%, -50%) scale(0.8);
+
+
+  /* 3. TAMAÑO MÁXIMO (Ancho): */
+
+  /* Cambia este número para agrandar o achicar la imagen. */
+
+  /* Prueba con 450px para verla más grande o 280px más chica. */
+  width: 500px;
+
+ 
+
+  height: auto; /* Mantiene la proporción */
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  z-index: 10;
+  border-radius: 20px;
+  filter: grayscale(100%);
+
+}
+
+
+.name-trigger:hover .reveal-img {
+
+  opacity: 0.8;
+  /* 4. ESCALA FINAL: */
+  /* scale(1) es su tamaño real (width: 350px). */
+  /* Si la pusiste muy chica inicialmente con scale(0.5), */
+  /* aquí podrías usar scale(1.2) para que crezca más. */
+  transform: translate(-50%, -50%) scale(1);
+
+}
+
+/* --- SECCIÓN 3: TEXTO SECUNDARIO --- */
+
+.content-text-block {
+  width: 100%;
+  max-width: 1400px; /* Aumentamos el máximo para dar más recorrido */
+  display: flex;
+  
+  /* AJUSTE CLAVE PARA ALINEAR CON LA MARCA: */
+  padding-left: 17.4%; /* Prueba con 18% o 20% para que coincida con tu guía */
+  box-sizing: border-box;
+}
+
+
+.text-wrapper-left {
+  text-align: left;
+  max-width: 900px; /* Un poco más ancho para compensar el desplazamiento */
+  width: 100%;
+}
+
+.secondary-paragraph {
+
+  font-family: 'Satoshi', sans-serif;
+  font-weight: 400;
+  font-size: clamp(1.2rem, 2.8vw, 2.5rem);
+  line-height: 1.1;
+  color: #141414;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+
+  /* Estas tres líneas son las que arreglan los cortes raros: */
+
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  text-wrap: pretty; /* Ayuda a evitar palabras sueltas al final */
+
+}
+
+
+
+.text-medium {
+  font-weight: 500 !important;
+}
+
+/* Estilo inicial: el contenido de la sección está invisible y un poco más abajo */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  /* CAMBIA ESTO: */
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* Cuando el script activa la sección, el contenido sube y aparece */
+.active-section .reveal {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Corrección para Lenis: el body NO debe tener overflow-x: hidden si rompe el scroll */
+body {
+  overflow-x: hidden;
+}
+
+.name-trigger {
+  font-weight: 700;
+  position: relative; /* CRUCIAL: La imagen se posiciona relativa a este elemento */
+  cursor: pointer;
+  display: inline-block;
+}
+
+
+/* --- MEDIA QUERIES (MÓVIL) --- */
+
+
+@media screen and (max-width: 768px) {
+  .v-item.section-1 {
+    height: 100vh !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    padding: 0 20px !important;
+  }
+
+  .content-text-block {
+    padding-left: 9.5% !important; /* Volvemos al margen estándar en móviles */
+  }
+
+  /* Usamos el selector completo para forzar la anulación */
+  .section-1 .hero-container.reveal {
+    display: flex !important;
+    flex-direction: column !important;
+    position: relative !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+.section-1 .hero-text {
+    position: relative !important;
+    right: auto !important;
+    top: 0 !important;
+    text-align: center !important;
+    width: 100% !important;
+    margin: 0 auto 30px auto !important; /* Margen estándar para separar del logo */
+    
+    /* ESTO LO SUBE SIN AFECTAR AL ESCRITORIO */
+    transform: translateY(-120px) !important; 
+  }
+
+  .section-1 .hero-text p {
+    font-size: 17px !important;
+  }
+
+ .section-1 .main-vector {
+    margin: 0 auto !important;
+    /* AJUSTE AQUÍ: */
+    margin-top: -160px !important; /* Ajusta este valor negativo para subirlo más */
+    width: 85% !important;
+    max-width: 300px !important;
+  }
+
+  /* 4. BIO (Para que no se vea una sola línea infinita) */
+.bio-paragraph {
+    font-size: 1.5rem !important;
+    white-space: normal !important; /* Permite que el texto baje de renglón */
+    display: block !important;
+    width: 100% !important;
+    text-align: left !important;
+  }
+  
+  .content-bio {
+    display: block !important;
+    width: 100% !important;
+    padding-left: 0 !important;
+  }
+
+/* NUEVO AJUSTE PARA LA IMAGEN EN MÓVIL */
+  .reveal-img {
+    /* 1. Achicamos la imagen considerablemente */
+    width: 250px !important; /* Ajusta este número (ej. 220px) según tu gusto */
+    
+    /* 2. Mantenemos el centrado absoluto */
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    
+    /* 3. Mantenemos el transform inicial (centrado + escala reducida) */
+    /* Usamos scale(0.6) para que empiece más chica antes del hover */
+    transform: translate(-50%, -50%) scale(0.6) !important;
+    
+    /* 4. Aseguramos que la opacidad inicial sea 0 (oculta) */
+    opacity: 0 !important;
+    pointer-events: none !important; /* Evita que el usuario la toque por error */
+  }
+
+  /* NUEVO AJUSTE PARA EL EFECTO HOVER EN MÓVIL */
+  .name-trigger:hover .reveal-img,
+  .name-trigger:active .reveal-img { /* Agregamos active para que funcione al toque en móvil */
+    /* Al hacer hover/toque, subimos la opacidad y la escala a 1 */
+    opacity: 0.9 !important; /* Un poco menos que 1 para un efecto más suave */
+    transform: translate(-50%, -50%) scale(1) !important; /* Vuelve a su tamaño (250px) */
+  }
+
+}
+
 </style>
+
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  import Lenis from "lenis";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const initScroll = () => {
+    // 1. Configuración de Lenis (Scroll Suave)
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true,
+      wheelMultiplier: 1,
+      lerp: 0.1
+    });
+
+    lenis.on('scroll', ScrollTrigger.update);
+
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+
+    // 2. Selección de elementos
+    const sections = gsap.utils.toArray(".v-item") as HTMLElement[];
+    const wrapper = document.querySelector(".vertical-wrapper");
+
+    if (!wrapper || sections.length === 0) return;
+
+    // 3. Snap Dinámico
+    ScrollTrigger.create({
+      trigger: ".vertical-wrapper",
+      start: "top top",
+      end: "bottom bottom",
+      snap: {
+        snapTo: 1 / (sections.length - 1),
+        duration: { min: 0.2, max: 0.5 },
+        delay: 0,
+        ease: "power1.inOut"
+      }
+    });
+
+    // 4. Detección de Sección Activa (Efecto Reveal)
+    sections.forEach((section) => {
+      ScrollTrigger.create({
+        trigger: section,
+        start: "top 60%", // Se activa cuando la sección entra un 40% en pantalla
+        end: "bottom 40%", // Se desactiva cuando sale un 60%
+        onToggle: (self) => {
+          if (self.isActive) {
+            section.classList.add("active-section");
+          } else {
+            section.classList.remove("active-section");
+          }
+        }
+      });
+    });
+
+    // Refrescar ScrollTrigger para asegurar que las posiciones sean correctas
+    ScrollTrigger.refresh();
+
+    // 5. Limpieza para Astro (Evita duplicados al navegar)
+    return () => {
+      lenis.destroy();
+      ScrollTrigger.getAll().forEach(t => t.kill());
+    };
+  };
+
+  // Inicialización en cada carga de página de Astro
+  document.addEventListener("astro:page-load", () => {
+    const cleanup = initScroll();
+    // Guardar cleanup para ejecutarlo antes de la siguiente carga si es necesario
+    document.addEventListener("astro:before-preparation", () => cleanup && cleanup(), { once: true });
+  });
+</script>

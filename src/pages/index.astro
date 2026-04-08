@@ -7,7 +7,7 @@ const allProjects = await getCollection('projects');
 const sortedProjects = allProjects.sort((a, b) => (a.data.order || 0) - (b.data.order || 0));
 ---
 
-<Layout title="INSULAR STUDIO">
+<Layout title="INSULAR ESTUDIO DE DISEÑO">
   <main class="home-wrapper">
     <header class="section-header">
       <div class="reveal-trigger work-trigger">
@@ -60,193 +60,175 @@ const sortedProjects = allProjects.sort((a, b) => (a.data.order || 0) - (b.data.
 </Layout>
 
 <style>
-  .home-wrapper {
-    width: 100%;
-    padding: 40px var(--margin) 120px var(--margin); 
-    box-sizing: border-box;
-  }
+/* 1. RESET Y GENERALES */
+.project-card {
+  text-decoration: none;
+  display: block;
+  color: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
 
-  .section-header {
-    margin-bottom: 40px; 
-  }
+.home-wrapper {
+  width: 100%;
+  padding: 40px var(--margin) 120px var(--margin); 
+  box-sizing: border-box;
+  overflow-x: hidden; /* Evita cualquier carril blanco accidental */
+}
 
-  .reveal-trigger {
-    position: relative;
-    display: inline-block;
-    cursor: crosshair;
-  }
+.section-header {
+  margin-bottom: 40px; 
+}
 
-  .section-header h1 {
-    font-family: 'Satoshi', sans-serif;
-    font-weight: 500;
-    font-size: clamp(32px, 15vw, 197px);
-    text-transform: uppercase;
-    margin: 0;
-    letter-spacing: -0.02em;
-    line-height: 1;
-    position: relative;
-    z-index: 10002; /* Por encima de todo */
-    transition: opacity 0.6s ease;
-  }
+.reveal-trigger {
+  position: relative;
+  display: inline-block;
+  cursor: crosshair;
+}
 
-  .work-trigger:hover h1 {
-    opacity: 0.3;
-  }
+.section-header h1 {
+  font-family: 'Satoshi', sans-serif;
+  font-weight: 500;
+  font-size: clamp(32px, 15vw, 197px);
+  text-transform: uppercase;
+  margin: 0;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  position: relative;
+  z-index: 10002;
+  transition: opacity 0.6s ease;
+}
 
-  /* CAPA DE DESENFOQUE */
-  .global-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: var(--bg);
-    opacity: 0;
-    visibility: hidden;
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    transition: opacity 0.6s ease, visibility 0.6s ease;
-    z-index: 9999; 
-    pointer-events: none;
-  }
+.work-trigger:hover h1 {
+  opacity: 0.3;
+}
 
-  .work-trigger:hover .global-overlay {
-    opacity: 0.8;
-    visibility: visible;
-  }
+/* 2. CAPA DE DESENFOQUE (Mantenemos tu interacción) */
+.global-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--bg);
+  opacity: 0;
+  visibility: hidden;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+  z-index: 9999; 
+  pointer-events: none;
+}
 
-  /* CONTENEDOR DE VIDEO: Posición Fija y Tamaño Controlado */
-/* 1. ESTADO INICIAL (OCULTO) */
-  .work-video-container {
-    position: absolute; 
-    top: 50%;
-    left: 50%;
-    
-    /* X se queda igual al hover para que no venga del costado */
-    /* Y está en -5% (apenas más abajo que el final) */
-    transform: translate(78.8%, -5%); 
-    
-    width: 400px; 
-    height: auto;
-    visibility: hidden;
-    opacity: 0;
-    
-    /* Bajamos el tiempo a 0.4s para que sea más reactivo y elegante */
-    transition: opacity 0.6s ease, transform 0.7s ease; 
-    z-index: 10001;
-    pointer-events: none;
-  }
+.work-trigger:hover .global-overlay {
+  opacity: 0.8;
+  visibility: visible;
+}
 
-  /* 2. ESTADO AL HACER HOVER (SUBE A SU LUGAR) */
-  .work-trigger:hover .work-video-container {
-    opacity: 1;
-    visibility: visible;
-    
-    /* X se mantiene en 78.8% para que no haya movimiento horizontal */
-    /* Y sube a -9.5% (el lugar que ya encontraste) */
-    transform: translate(78.8%, -9.5%); 
-  }
-  .work-video-container video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-  /* GRILLA MODULAR */
-  .modular-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px; 
-    align-items: start;
-  }
+/* 3. VIDEO: Desktop */
+.work-video-container {
+  position: absolute; 
+  top: 50%;
+  left: 50%;
+  transform: translate(78.8%, -5%); 
+  width: 400px; 
+  height: auto;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.6s ease, transform 0.7s ease; 
+  z-index: 10001;
+  pointer-events: none;
+}
 
-  .project-card {
-    text-decoration: none;
-    display: block;
-  }
+.work-trigger:hover .work-video-container {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(78.8%, -9.5%); 
+}
 
-  .image-container {
-    position: relative;
-    background: #f4f4f4;
-    overflow: hidden;
-    width: 100%;
-  }
+.work-video-container video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
 
-  .project-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(247, 247, 247, 0.6);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transition: opacity 0.4s ease;
-  }
+/* 4. GRILLA MODULAR */
+.modular-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px; 
+  align-items: start;
+}
 
-  .project-title {
-    font-size: 13px;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-  }
+.image-container {
+  position: relative;
+  background: #f4f4f4;
+  overflow: hidden;
+  width: 100%;
+}
 
-  .project-card:hover .project-overlay { opacity: 1; }
-  .project-card:hover img { transform: scale(1.02); opacity: 0.8; }
+.project-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(247, 247, 247, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
 
-  .project-card.cuadrado .image-container { aspect-ratio: 1 / 1; }
-  .project-card.horizontal .image-container { aspect-ratio: 2.03 / 1; }
+.project-title {
+  font-size: 13px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
 
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
-  }
+.project-card:hover .project-overlay { opacity: 1; }
+.project-card:hover img { transform: scale(1.02); opacity: 0.8; }
 
-/* MOBILE RESPONSIVE - GRILLA Y VIDEO CORREGIDO */
+.project-card.cuadrado .image-container { aspect-ratio: 1 / 1; }
+.project-card.horizontal .image-container { aspect-ratio: 2.03 / 1; }
+
+/* REGLA CRÍTICA DE IMAGEN (Sin !important dañinos) */
+img {
+  max-width: 100%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+}
+
+/* 5. MOBILE RESPONSIVE (Limpieza total) */
 @media (max-width: 768px) {
   .home-wrapper {
-    /* 1. Espacio arriba de WORK (Ajusta este número a tu gusto) */
-    padding: 5px 0 80px 0 !important; 
-    width: 100%;
+    padding: 5px var(--margin) 80px var(--margin); 
   }
 
  .section-header {
-    padding: 0 var(--margin);
-    /* 2. Espacio abajo de WORK (Mismo valor que el padding-top del wrapper) */
-    margin-bottom: 20px !important; 
-    display: block; 
-    text-align: left;
-  }
+  padding: 0; /* WORK se alineará con el borde del home-wrapper */
+  margin-bottom: 29px; 
+}
 
-  /* IMPORTANTE: Forzamos que el trigger ocupe el ancho para poder centrar el video */
   .reveal-trigger.work-trigger {
-    display: block !important;
+    display: block;
     width: 100%;
-    position: relative;
   }
 
   .section-header h1 {
-    font-size: clamp(60px, 18vw, 95px) !important;
-    text-align: left;
+    font-size: clamp(60px, 18vw, 95px);
     line-height: 0.9;
-    display: inline-block;
   }
 
   .modular-grid { 
     display: flex;
     flex-direction: column;
-    gap: 48px; 
-    width: 100%;
-  }
-
-  .project-card {
-    width: 100%;
-    position: relative;
+    gap: 20px; /* <--- Cambiá este valor (antes estaba en 48px) */
   }
 
   .project-overlay { 
@@ -254,54 +236,21 @@ const sortedProjects = allProjects.sort((a, b) => (a.data.order || 0) - (b.data.
     display: flex; 
     opacity: 1; 
     background: transparent;
-    justify-content: flex-start;
     padding: 15px var(--margin) 5px var(--margin);
-    height: auto;
   }
 
-  .project-title {
-    font-size: 12px;
-    color: var(--black);
-    opacity: 0.7;
-  }
-
-  /* VIDEO EN MOBILE: Centrado y dentro de márgenes */
+  /* VIDEO EN MOBILE: Centrado con márgenes reales */
   .work-video-container {
-    position: absolute;
-    top: 110% !important; 
-    
-    /* Centrado real */
-    left: 0 !important;
-    right: 0 !important;
-    margin: 0 auto !important; 
-    
-    /* Ancho exacto igual al margen del logo y los textos */
-    width: calc(100% - (var(--margin) * 0)) !important; 
-    /* Si quieres que tenga un airecito a los lados, usa: calc(100% - 40px) */
-    
+    left: 50%;
+    right: auto;
+    top: 110%;
+    width: calc(100% - (var(--margin) * 2));
     max-width: 450px;
-    height: auto;
-    
-    /* Efecto de entrada suave */
-    transform: translateY(10px) scale(0.98) !important;
-    
-    z-index: 10001;
-    transition: opacity 0.4s ease, transform 0.5s ease;
-    visibility: hidden;
-    opacity: 0;
-    pointer-events: none;
+    transform: translate(-50%, 10px) scale(0.98);
   }
 
   .work-trigger:hover .work-video-container {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0) scale(1) !important;
-  }
-
-  .work-video-container video {
-    width: 100%;
-    height: auto;
-    display: block;
-    object-fit: cover;
+    transform: translate(-50%, 0) scale(1);
   }
 }
+</style>

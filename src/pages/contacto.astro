@@ -2,107 +2,171 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="CONTACTO | INSULAR STUDIO">
-  <main class="page-container">
-    <section class="content-grid">
-      <div class="title-col">
+<Layout title="CONTACTO | INSULAR">
+  <main class="home-wrapper contacto-page">
+    <header class="section-header">
+      <div class="reveal-trigger work-trigger">
         <h1>CONTACTO</h1>
+        
+        <div class="global-overlay"></div>
       </div>
-      <div class="text-col">
-        <p class="placeholder-text">
-          ¿Tenés un proyecto en mente?<br/>
-          Escribinos a: <br class="mobile-only"/>
-          <a href="mailto:insulaar.estudio@gmail.com" class="email-link">insulaar.estudio@gmail.com</a>
+
+      <div class="contact-info-block">
+        <p class="contact-item">
+          <strong>MAIL:</strong> <a href="mailto:insulaar.estudio@gmail.com">INSULAAR.ESTUDIO@GMAIL.COM</a>
+        </p>
+        <p class="contact-item">
+          <strong>INSTAGRAM:</strong> <a href="https://www.instagram.com/insulaar/" target="_blank">INSULAR</a>
+        </p>
+        <p class="contact-item">
+          <strong>WSP:</strong> 2213510707
         </p>
       </div>
-    </section>
+    </header>
   </main>
 </Layout>
 
 <style>
-  .page-container {
-    /* Mismo respiro que la página Insular y proyectos */
-    padding: 150px var(--margin); 
-    min-height: 70vh;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .content-grid {
-    display: grid;
-    grid-template-columns: repeat(9, 1fr);
-    gap: var(--gap);
+  .home-wrapper {
     width: 100%;
-  }
-  
-  .title-col { 
-    grid-column: span 3; 
-  }
-  
-  .text-col { 
-    grid-column: 5 / span 5; 
-  }
-  
-  h1 { 
-    font-size: 48px; 
-    font-weight: 500; 
-    text-transform: uppercase; 
-    line-height: 0.9;
-    margin: 0;
-  }
-  
-  .placeholder-text { 
-    font-size: 36px; 
-    line-height: 1.1; 
-    font-weight: 400; 
-    letter-spacing: -0.02em;
-    margin: 0;
+    padding: 40px var(--margin) 120px var(--margin); 
+    box-sizing: border-box;
+    min-height: 90vh;
+    display: flex;
+    align-items: flex-start;
   }
 
-  .email-link { 
-    color: inherit; 
-    text-decoration: underline; 
-    text-underline-offset: 4px;
+  .section-header {
+    width: 100%;
+    display: block; 
+    position: relative;
+    margin-bottom: 40px; 
+  }
+
+  .reveal-trigger {
+    position: relative;
+    display: inline-block;
+    cursor: crosshair;
+  }
+
+  .section-header h1 {
+    font-family: 'Satoshi', sans-serif;
+    font-weight: 500;
+    font-size: clamp(32px, 15vw, 197px);
+    text-transform: uppercase;
+    margin: 0;
+    letter-spacing: -0.02em;
+    line-height: 0.9;
+    position: relative;
+    z-index: 10002;
+    transition: opacity 0.6s ease;
+  }
+
+  /* Mantiene el efecto de desvanecimiento del texto */
+  .work-trigger:hover h1 {
+    opacity: 0.3;
+  }
+
+  .contact-info-block {
+  position: absolute;
+  /* Bajamos el porcentaje para moverlo a la izquierda */
+  left: 57%; 
+  
+  /* Mantenemos la altura que ya te funcionaba */
+  top: 450px; 
+  
+  text-align: left;
+  max-width: 600px; 
+  z-index: 10005; 
+}
+
+  .contact-item {
+    font-family: 'Satoshi', sans-serif;
+    font-weight: 400;
+    font-size: 24px; 
+    line-height: 1.2;
+    margin: 0 0 15px 0;
+    text-transform: uppercase;
+    color: #000;
+    letter-spacing: -0.01em;
+  }
+
+  .contact-item strong {
+    font-weight: 700;
+    margin-right: 10px;
+  }
+
+  .contact-item a {
+    color: inherit;
+    text-decoration: none;
     transition: opacity 0.3s ease;
   }
 
-  .email-link:hover {
+  .contact-item a:hover {
     opacity: 0.6;
   }
 
-  .mobile-only {
-    display: none;
+  /* --- MANTENEMOS EL BLUR DEL FONDO --- */
+  .global-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--bg);
+    opacity: 0;
+    visibility: hidden;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    transition: opacity 0.6s ease, visibility 0.6s ease;
+    z-index: 9999; 
+    pointer-events: none;
   }
 
-  /* Responsivo: Ajuste exacto a la estética de Insular Studio */
+  .work-trigger:hover .global-overlay {
+    opacity: 0.8;
+    visibility: visible;
+  }
+
+  /* --- RESPONSIVO --- */
   @media (max-width: 900px) {
-    .page-container {
-      padding: 120px var(--margin) 80px var(--margin);
+    .home-wrapper {
+      /* Forzamos que el padding lateral sea exactamente el mismo que el del header */
+      padding: 80px var(--margin) 80px var(--margin) !important;
     }
-    
-    .content-grid {
+
+    .section-header {
       display: flex;
       flex-direction: column;
-      gap: 40px; /* Un poco más de aire entre h1 y texto */
+      gap: 40px;
+      /* Eliminamos cualquier alineación centrada o padding extra */
+      align-items: flex-start; 
+      padding-left: 0 !important; 
     }
 
-    h1 { 
-      font-size: 32px; 
-    }
-
-    .placeholder-text { 
-      font-size: 24px; 
-    }
-
-    .mobile-only {
+    .reveal-trigger {
+      /* Asegura que el contenedor del h1 no tenga desplazamiento */
       display: block;
+      width: 100%;
     }
 
-    .email-link {
-      /* Evita que el mail desborde y rompa el ancho de la página en celulares */
-      word-break: break-all;
-      display: inline-block;
-      margin-top: 10px;
+    .section-header h1 {
+      /* Ajustamos el tamaño para que no desborde y mantenga la línea */
+      font-size: clamp(40px, 15vw, 70px) !important;
+      margin-left: -2px; /* Ajuste óptico para alinear la 'C' perfectamente con el cuadrado del logo */
+    }
+
+    .contact-info-block {
+      position: relative;
+      left: 0 !important;
+      top: 0 !important;
+      padding-left: 0 !important;
+      margin-top: 0;
+    }
+
+    .contact-item {
+      font-size: 18px;
+      line-height: 1.3;
     }
   }
 </style>

@@ -1,7 +1,7 @@
 ---
 import { ViewTransitions } from 'astro:transitions';
 interface Props { title?: string; }
-const { title = "INSULAR STUDIO" } = Astro.props;
+const { title = "INSULAR ESTUDIO DE DISEÑO" } = Astro.props;
 ---
 <!doctype html>
 <html lang="es">
@@ -64,8 +64,8 @@ const { title = "INSULAR STUDIO" } = Astro.props;
         <footer class="site-footer">
             <div class="footer-grid">
                 <div class="footer-item">
-                    <h3>Estudio</h3>
-                    <p>INSULAR STUDIO</p>
+                    <h3>Insular</h3>
+                    <p>2026 by Lue</p>
                 </div>
                 
                 <div class="footer-item">
@@ -75,12 +75,12 @@ const { title = "INSULAR STUDIO" } = Astro.props;
 
                 <div class="footer-item">
                     <h3>Instagram</h3>
-                    <a href="https://instagram.com/insular.studio" target="_blank">@INSULAR.STUDIO</a>
+                    <a href="https://instagram.com/insulaar" target="_blank">@INSULAAR</a>
                 </div>
 
                 <div class="footer-item">
                     <h3>Contacto</h3>
-                    <a href="mailto:hola@insular.studio">HOLA@INSULAR.STUDIO</a>
+                    <a href="mailto:INSULAAR.ESTUDIO@GMAIL.COM">INSULAAR.ESTUDIO@GMAIL.COM</a>
                 </div>
             </div>
         </footer>
@@ -393,6 +393,24 @@ body.no-scroll .back-to-top {
 .no-scroll {
     overflow: hidden !important;
     height: 100vh;
+}
+
+/* 1. Reset para que los nombres no se pongan azules ni se subrayen */
+a {
+  text-decoration: none; /* Quita el subrayado */
+  color: inherit;       /* Hereda el color del padre (negro o blanco) */
+  outline: none;        /* Quita el borde azul al hacer clic */
+}
+
+/* 2. Evitar el resaltado azul al tocar en móviles */
+a, button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* 3. Específicamente para tus títulos en el home */
+.project-card, .project-title {
+  color: var(--black, #000); /* Asegura que siempre sea el color de tu marca */
+  user-select: none;         /* Evita que el texto se "pinte" de azul al arrastrar el mouse */
 }
 
 

@@ -1,16 +1,33 @@
 ---
 title: "BOCANADA"
 visual: "cuadrado"
-category: "INTERIORISMO"
+category: ["TYPE DESIGN", "MOTION GRAPHICS 3D"]
 image: "./cover.webp"
-order: 10
-column: 2
-row: 4
+order: 13
+column: 3
+row: 7
 ---
 
 <video src="/img/bocanada/1.mp4" autoplay loop muted playsinline></video>
 
+<div class="text-box">
+
+<p class="f-bold t-large upper">BOCANADA TYPE DESIGN</p>
+<p class="f-regular t-medium"><br />DISEÑO DE TIPOGRAFÍA, VECTORIZADA Y ANIMADA.
+<br /><br />BOCANADA ES UN PROYECTO DE ESTUDIO DESARROLLADO ÍNTEGRAMENTE EN BLENDER. EL PROCESO ABARCÓ DESDE EL MODELADO Y TEXTURIZADO HASTA LA ANIMACIÓN Y EL RENDERIZADO FINAL UTILIZANDO EL MOTOR CYCLES. <br /><br /> LA INTEGRACIÓN DE TEXTURAS Y CANALES ALFA SE REALIZÓ MEDIANTE ADOBE ILLUSTRATOR.<br /> EL MONTAJE Y LA POSTPRODUCCIÓN FINAL SE EJECUTARON <br /> EN AFTER EFFECTS. </p>
+
+</div>
+
 ![UNO](./1.webp)
+<div class="text-box">
+
+<p class="t-medium">
+<span class="f-regular"><br />Créditos:</span> 
+<span class="f-light"> Lue </span></p>
+
+
+</div>
+
 
 ![DOS](./2.webp)
 

@@ -1,11 +1,11 @@
 ---
 title: "DICHA"
 visual: "cuadrado"
-category: "INTERIORISMO"
+category: ["DISEÑO DE INTERIOR", "ARCHVIZ", "RENDER 3D", "BRANDING"]
 image: "./cover.webp"
-order: 1
-column: 1
-row: 1
+order: 3
+column: 2
+row: 2
 ---
 <video src="/img/dicha/15.mp4" autoplay loop muted playsinline></video>
 <div class="text-box">
