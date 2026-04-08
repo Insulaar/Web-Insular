@@ -10,7 +10,7 @@ const projects = defineCollection({
         // Astro procesa y optimiza la imagen de portada automáticamente
         image: image(), 
         visual: z.enum(['cuadrado', 'horizontal']),
-        category: z.string(),
+        category: z.array(z.string()),
         // Control de orden y grilla en la Home
         order: z.number().optional(),
         column: z.number().optional(),
