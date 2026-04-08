@@ -1,5 +1,5 @@
 ---
-title: "CRONTANTE"
+title: "CROCANTE"
 visual: "cuadrado"
 category: ["BRANDING"]
 image: "./cover.webp"
