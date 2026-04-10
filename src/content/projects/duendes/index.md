@@ -1,5 +1,5 @@
 ---
-title: "HOTEL NAVIDAD Ville Saint Germain "
+title: "HOTEL NAVIDAD Ville Saint Germain"
 visual: "horizontal"
 category: ["ANIMACION", "MOTION GRAPCHIS", "MAPPING", "ARCHVIZ", "RENDER 3D"]
 image: "./cover.webp"
@@ -109,28 +109,32 @@ Hicimos posible una atmósfera mágica e inmersiva en el Ville Saint Germain, el
 
 ![CATORCE](./14.webp)
 
+<video src="/img/duendes/27.mp4" autoplay loop muted playsinline></video>
+
+<video src="/img/duendes/28.mp4" autoplay loop muted playsinline></video>
+
+
 ![QUINCE](./15.webp)
+
+<video src="/img/duendes/29.mp4" autoplay loop muted playsinline></video>
 
 ![DIECISÉIS](./16.webp)
 
+<video src="/img/duendes/30.mp4" autoplay loop muted playsinline></video>
+
+
 ![DIECISIETE](./17.webp)
+
+<video src="/img/duendes/31.mp4" autoplay loop muted playsinline></video>
 
 ![DIECIOCHO](./18.webp)
 
 ![DIECINUEVE](./19.webp)
 
-![VEINTE](./20.webp)
+<video src="/img/duendes/33.mp4" autoplay loop muted playsinline></video>
 
 ![VEINTIUNO](./21.webp)
 
-![VEINTIDÓS](./22.webp)
-
-![VEINTITRÉS](./23.webp)
-
-![VEINTICUATRO](./24.webp)
-
-![VEINTICINCO](./25.webp)
-
 ![VEINTISEIS](./26.webp)
 
-![VEINTISIETE](./27.webp)
+
